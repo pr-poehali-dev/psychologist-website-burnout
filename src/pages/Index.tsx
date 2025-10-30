@@ -152,17 +152,20 @@ const Index = () => {
                   </p>
                 </div>
                 <div className="space-y-3 pt-4">
-                  <div className="flex items-center gap-3">
-                    <Icon name="GraduationCap" className="text-primary" size={24} />
-                    <span>Магистр психологии, МГУ</span>
+                  <div className="flex items-start gap-3">
+                    <Icon name="GraduationCap" className="text-primary flex-shrink-0 mt-1" size={24} />
+                    <div className="flex flex-col">
+                      <span className="font-medium">Психолог, Преподаватель психологии</span>
+                      <span className="text-sm text-muted-foreground">Московский Социально-Педагогический институт</span>
+                    </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Icon name="Award" className="text-primary" size={24} />
-                    <span>Сертифицированный КПТ-терапевт</span>
+                    <span>Сертифицированный специалист психологии менеджмента</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Icon name="Users" className="text-primary" size={24} />
-                    <span>300+ успешных клиентов</span>
+                    <Icon name="Briefcase" className="text-primary" size={24} />
+                    <span>Когнитивно-поведенческая терапия (КПТ)</span>
                   </div>
                 </div>
               </div>
