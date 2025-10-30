@@ -352,11 +352,12 @@ const Index = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 p-8 rounded-xl text-center space-y-4">
-                    <div className="w-24 h-24 mx-auto bg-blue-600 rounded-full flex items-center justify-center">
-                      <Icon name="Send" size={48} className="text-white" />
-                    </div>
-                    <p className="font-semibold text-lg">@Algonpsycholog</p>
+                  <div className="bg-white p-4 rounded-xl shadow-md w-fit mx-auto">
+                    <img 
+                      src="https://cdn.poehali.dev/files/4267afa7-4bb8-44d6-93dd-5e9c680f1373.png" 
+                      alt="QR-код Telegram канала @Algonpsycholog" 
+                      className="w-48 h-48 object-contain"
+                    />
                   </div>
                   <Button asChild size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
                     <a href="https://t.me/Algonpsycholog" target="_blank" rel="noopener noreferrer">
