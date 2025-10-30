@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -43,7 +44,11 @@ const AboutSection = () => {
               <div className="space-y-3 pt-4">
                 <Dialog open={diplomaOpen} onOpenChange={setDiplomaOpen}>
                   <DialogTrigger asChild>
-                    <div className="flex items-start gap-3 cursor-pointer hover:bg-primary/5 p-3 rounded-lg transition-colors">
+                    <div className="flex items-start gap-3 cursor-pointer hover:bg-primary/5 p-3 rounded-lg transition-colors border border-primary/20 relative">
+                      <Badge className="absolute -top-2 -right-2 bg-green-600 hover:bg-green-700 text-white">
+                        <Icon name="ShieldCheck" size={14} className="mr-1" />
+                        Проверено
+                      </Badge>
                       <Icon name="GraduationCap" className="text-primary flex-shrink-0 mt-1" size={24} />
                       <div className="flex flex-col">
                         <span className="font-medium">Психолог, Преподаватель психологии</span>
