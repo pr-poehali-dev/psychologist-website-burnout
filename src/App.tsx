@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Manifesto from "./pages/Manifesto";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <ScrollToTop />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
