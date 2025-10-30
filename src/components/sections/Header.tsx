@@ -18,7 +18,7 @@ const Header = ({ onBooking }: HeaderProps) => {
           <h1 className="text-2xl font-bold text-primary">Александр Гонтарь</h1>
         </div>
         <nav className="hidden md:flex gap-6">
-          <a href="#about" className="text-foreground/70 hover:text-primary transition-colors">О специалисте</a>
+          <a href="#about" className="text-foreground/70 hover:text-primary transition-colors">Обо мне</a>
           <a href="#services" className="text-foreground/70 hover:text-primary transition-colors">Услуги</a>
           <a href="#cases" className="text-foreground/70 hover:text-primary transition-colors">Кейсы</a>
           <a href="/manifesto" className="text-foreground/70 hover:text-primary transition-colors font-semibold">Манифест</a>
