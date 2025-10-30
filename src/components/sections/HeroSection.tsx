@@ -7,6 +7,8 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ onBooking }: HeroSectionProps) => {
+  const yearsOfPractice = new Date().getFullYear() - 2005;
+
   return (
     <section className="py-20 md:py-32">
       <div className="container mx-auto px-4">
@@ -18,6 +20,20 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Практическая психология • Когнитивно-поведенческая терапия (КПТ) • Доказательный подход
           </p>
+          <div className="flex justify-center gap-8 py-4">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-primary">{yearsOfPractice}+</div>
+              <div className="text-sm text-muted-foreground mt-1">лет практики</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-primary">500+</div>
+              <div className="text-sm text-muted-foreground mt-1">клиентов</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-primary">95%</div>
+              <div className="text-sm text-muted-foreground mt-1">результат</div>
+            </div>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button size="lg" className="text-lg px-8 btn-pulse btn-float" onClick={onBooking}>
               <Icon name="Calendar" size={20} className="mr-2" />
