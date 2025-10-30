@@ -17,7 +17,7 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
             <img 
               src="https://cdn.poehali.dev/files/2e684343-1c6d-4fc9-b7ac-ec0d255a56e5.jpg" 
               alt="Александр Гонтарь - психолог" 
-              className="w-48 h-48 rounded-full object-cover border-4 border-primary shadow-2xl"
+              className="w-80 h-96 object-cover rounded-2xl border-4 border-primary shadow-2xl"
             />
           </div>
           <Badge variant="outline" className="text-primary border-primary">Александр Гонтарь — ваш психолог</Badge>
