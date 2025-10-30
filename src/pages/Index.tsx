@@ -17,10 +17,8 @@ const Index = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success('Заявка отправлена! Я свяжусь с вами в ближайшее время.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+  const handleBooking = () => {
+    window.open('https://calink.ru/Algon', '_blank');
   };
 
   const services = [
@@ -91,74 +89,17 @@ const Index = () => {
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-primary">Психолог</h1>
+          <h1 className="text-2xl font-bold text-primary">Александр Гонтарь</h1>
           <nav className="hidden md:flex gap-6">
             <a href="#services" className="text-foreground/70 hover:text-primary transition-colors">Услуги</a>
             <a href="#articles" className="text-foreground/70 hover:text-primary transition-colors">Статьи</a>
             <a href="#reviews" className="text-foreground/70 hover:text-primary transition-colors">Отзывы</a>
             <a href="#about" className="text-foreground/70 hover:text-primary transition-colors">О специалисте</a>
           </nav>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="hidden md:flex">
-                <Icon name="Calendar" size={18} className="mr-2" />
-                Записаться
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Запись на консультацию</DialogTitle>
-                <DialogDescription>
-                  Заполните форму, и я свяжусь с вами для уточнения удобного времени
-                </DialogDescription>
-              </DialogHeader>
-              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-                <div>
-                  <Label htmlFor="name">Имя</Label>
-                  <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Ваше имя"
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="phone">Телефон</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+7 (___) ___-__-__"
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="message">Сообщение (необязательно)</Label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Расскажите кратко о вашей ситуации"
-                    rows={4}
-                  />
-                </div>
-                <Button type="submit" className="w-full">Отправить заявку</Button>
-              </form>
-            </DialogContent>
-          </Dialog>
+          <Button className="hidden md:flex" onClick={handleBooking}>
+            <Icon name="Calendar" size={18} className="mr-2" />
+            Записаться
+          </Button>
         </div>
       </header>
 
@@ -166,79 +107,23 @@ const Index = () => {
       <section className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
-            <Badge variant="outline" className="text-primary border-primary">Профессиональная психологическая помощь</Badge>
+            <Badge variant="outline" className="text-primary border-primary">Александр Гонтарь — ваш психолог</Badge>
             <h2 className="text-4xl md:text-6xl font-bold leading-tight">
               Путь от выгорания к <span className="text-primary">балансу</span> и энергии
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Помогаю IT-специалистам и профессионалам высоконагруженных сфер восстановить ресурс, 
-              наладить отношения с технологиями и вернуть радость от работы
+              Практическая психология • Когнитивно-поведенческая терапия (КПТ) • Доказательный подход
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="text-lg px-8">
-                    <Icon name="Calendar" size={20} className="mr-2" />
-                    Записаться на консультацию
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Запись на консультацию</DialogTitle>
-                    <DialogDescription>
-                      Заполните форму, и я свяжусь с вами для уточнения удобного времени
-                    </DialogDescription>
-                  </DialogHeader>
-                  <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-                    <div>
-                      <Label htmlFor="name2">Имя</Label>
-                      <Input
-                        id="name2"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Ваше имя"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email2">Email</Label>
-                      <Input
-                        id="email2"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="your@email.com"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone2">Телефон</Label>
-                      <Input
-                        id="phone2"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+7 (___) ___-__-__"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="message2">Сообщение (необязательно)</Label>
-                      <Textarea
-                        id="message2"
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder="Расскажите кратко о вашей ситуации"
-                        rows={4}
-                      />
-                    </div>
-                    <Button type="submit" className="w-full">Отправить заявку</Button>
-                  </form>
-                </DialogContent>
-              </Dialog>
-              <Button size="lg" variant="outline" className="text-lg px-8">
-                <Icon name="BookOpen" size={20} className="mr-2" />
-                Читать статьи
+              <Button size="lg" className="text-lg px-8" onClick={handleBooking}>
+                <Icon name="Calendar" size={20} className="mr-2" />
+                Записаться на консультацию
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8" asChild>
+                <a href="https://dzen.ru/id/68f6621b6539c44524418486" target="_blank" rel="noopener noreferrer">
+                  <Icon name="BookOpen" size={20} className="mr-2" />
+                  Читать статьи в Дзен
+                </a>
               </Button>
             </div>
           </div>
@@ -334,29 +219,31 @@ const Index = () => {
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {articles.map((article, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer group">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
-                      <div className="flex items-center gap-1">
-                        <Icon name="Calendar" size={14} />
-                        <span>{article.date}</span>
+                <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer group" asChild>
+                  <a href="https://dzen.ru/id/68f6621b6539c44524418486" target="_blank" rel="noopener noreferrer">
+                    <CardHeader>
+                      <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+                        <div className="flex items-center gap-1">
+                          <Icon name="Calendar" size={14} />
+                          <span>{article.date}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Icon name="Clock" size={14} />
+                          <span>{article.readTime}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Icon name="Clock" size={14} />
-                        <span>{article.readTime}</span>
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                        {article.title}
+                      </CardTitle>
+                      <CardDescription className="text-base">{article.excerpt}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-primary flex items-center">
+                        Читать в Дзен
+                        <Icon name="ArrowRight" size={16} className="ml-1" />
                       </div>
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {article.title}
-                    </CardTitle>
-                    <CardDescription className="text-base">{article.excerpt}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button variant="link" className="p-0 h-auto">
-                      Читать полностью
-                      <Icon name="ArrowRight" size={16} className="ml-1" />
-                    </Button>
-                  </CardContent>
+                    </CardContent>
+                  </a>
                 </Card>
               ))}
             </div>
@@ -404,67 +291,10 @@ const Index = () => {
             <p className="text-xl text-white/90">
               Запишитесь на первую консультацию, и мы вместе найдем путь к балансу
             </p>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button size="lg" variant="secondary" className="text-lg px-8">
-                  <Icon name="Calendar" size={20} className="mr-2" />
-                  Записаться на консультацию
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Запись на консультацию</DialogTitle>
-                  <DialogDescription>
-                    Заполните форму, и я свяжусь с вами для уточнения удобного времени
-                  </DialogDescription>
-                </DialogHeader>
-                <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-                  <div>
-                    <Label htmlFor="name3">Имя</Label>
-                    <Input
-                      id="name3"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Ваше имя"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email3">Email</Label>
-                    <Input
-                      id="email3"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="your@email.com"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone3">Телефон</Label>
-                    <Input
-                      id="phone3"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+7 (___) ___-__-__"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="message3">Сообщение (необязательно)</Label>
-                    <Textarea
-                      id="message3"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Расскажите кратко о вашей ситуации"
-                      rows={4}
-                    />
-                  </div>
-                  <Button type="submit" className="w-full">Отправить заявку</Button>
-                </form>
-              </DialogContent>
-            </Dialog>
+            <Button size="lg" variant="secondary" className="text-lg px-8" onClick={handleBooking}>
+              <Icon name="Calendar" size={20} className="mr-2" />
+              Записаться на консультацию
+            </Button>
           </div>
         </div>
       </section>
@@ -475,9 +305,9 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-8">
               <div className="space-y-4">
-                <h4 className="font-bold text-lg">Психолог</h4>
+                <h4 className="font-bold text-lg">Александр Гонтарь</h4>
                 <p className="text-sm text-muted-foreground">
-                  Профессиональная помощь при выгорании и IT детоксе
+                  Практическая психология | КПТ | Доказательный подход
                 </p>
               </div>
               <div className="space-y-4">
@@ -491,34 +321,47 @@ const Index = () => {
               </div>
               <div className="space-y-4">
                 <h5 className="font-semibold">Контакты</h5>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
+                <div className="space-y-2 text-sm">
+                  <a href="mailto:Algonpsy@vk.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                     <Icon name="Mail" size={16} />
-                    <span>psycholog@example.com</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Icon name="Phone" size={16} />
-                    <span>+7 (999) 123-45-67</span>
-                  </div>
+                    <span>Algonpsy@vk.com</span>
+                  </a>
+                  <a href="https://t.me/algonpsy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                    <Icon name="Send" size={16} />
+                    <span>@algonpsy</span>
+                  </a>
                 </div>
               </div>
               <div className="space-y-4">
                 <h5 className="font-semibold">Социальные сети</h5>
                 <div className="flex gap-3">
-                  <Button size="icon" variant="outline">
-                    <Icon name="Send" size={18} />
+                  <Button size="icon" variant="outline" asChild>
+                    <a href="https://t.me/algonpsy" target="_blank" rel="noopener noreferrer">
+                      <Icon name="Send" size={18} />
+                    </a>
                   </Button>
-                  <Button size="icon" variant="outline">
-                    <Icon name="Instagram" size={18} />
+                  <Button size="icon" variant="outline" asChild>
+                    <a href="https://instagram.com/algonpsy" target="_blank" rel="noopener noreferrer">
+                      <Icon name="Instagram" size={18} />
+                    </a>
                   </Button>
-                  <Button size="icon" variant="outline">
-                    <Icon name="Facebook" size={18} />
+                  <Button size="icon" variant="outline" asChild>
+                    <a href="https://vk.com/psychologist1111" target="_blank" rel="noopener noreferrer">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.39 14.66h-1.6c-.69 0-.9-.56-2.14-1.81-1.08-1.05-1.56-1.19-1.83-1.19-.37 0-.48.11-.48.64v1.65c0 .45-.14.71-1.31.71-1.94 0-4.09-1.17-5.61-3.35-2.28-3.17-2.91-5.57-2.91-6.06 0-.27.11-.52.64-.52h1.6c.48 0 .66.22.84.73.97 2.79 2.59 5.23 3.26 5.23.25 0 .36-.11.36-.74V9.86c-.09-1.37-.8-1.49-.8-1.97 0-.21.18-.43.46-.43h2.51c.4 0 .55.22.55.69v3.71c0 .4.18.55.29.55.25 0 .45-.15.91-.6 1.4-1.57 2.4-4 2.4-4 .13-.28.35-.52.83-.52h1.6c.57 0 .7.29.57.69-.22 1.02-2.39 4.12-2.39 4.12-.21.35-.29.51 0 .91.21.29.91.89 1.38 1.43.86.97 1.52 1.78 1.7 2.34.17.56-.1.84-.67.84z"/>
+                      </svg>
+                    </a>
+                  </Button>
+                  <Button size="icon" variant="outline" asChild>
+                    <a href="https://dzen.ru/id/68f6621b6539c44524418486" target="_blank" rel="noopener noreferrer">
+                      <Icon name="BookOpen" size={18} />
+                    </a>
                   </Button>
                 </div>
               </div>
             </div>
             <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-              © 2024 Психолог. Все права защищены.
+              © 2024 Александр Гонтарь. Все права защищены.
             </div>
           </div>
         </div>
