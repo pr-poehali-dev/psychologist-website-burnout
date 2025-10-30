@@ -18,7 +18,14 @@ const SocialSection = () => {
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
+            <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+              <a href="https://www.instagram.com/algonpsy/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <Icon name="Instagram" size={20} />
+                <span>Instagram</span>
+              </a>
+            </Button>
+
             <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
               <a href="https://t.me/Algonpsycholog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <Icon name="Send" size={20} />
