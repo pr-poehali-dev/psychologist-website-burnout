@@ -197,8 +197,12 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-primary/10 to-accent rounded-3xl h-[500px] flex items-center justify-center">
-                <Icon name="UserCircle" size={200} className="text-primary/20" />
+              <div className="rounded-3xl h-[500px] overflow-hidden shadow-xl">
+                <img 
+                  src="https://cdn.poehali.dev/files/4a3a6dbf-3e9e-40b4-b434-9b2f343e76e4.jpg" 
+                  alt="Александр Гонтарь - психолог" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
