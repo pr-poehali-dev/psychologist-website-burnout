@@ -153,4 +153,40 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  .btn-pulse {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-pulse::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.6s,
+      height 0.6s;
+  }
+
+  .btn-pulse:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn-float {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .btn-float:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
 }

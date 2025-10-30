@@ -19,11 +19,11 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
             Практическая психология • Когнитивно-поведенческая терапия (КПТ) • Доказательный подход
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="text-lg px-8" onClick={onBooking}>
+            <Button size="lg" className="text-lg px-8 btn-pulse btn-float" onClick={onBooking}>
               <Icon name="Calendar" size={20} className="mr-2" />
               Записаться на консультацию
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-8 btn-float" asChild>
               <a href="https://dzen.ru/id/68f6621b6539c44524418486" target="_blank" rel="noopener noreferrer">
                 <Icon name="BookOpen" size={20} className="mr-2" />
                 Читать статьи в Дзен
