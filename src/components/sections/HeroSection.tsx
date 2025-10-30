@@ -14,12 +14,12 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
           <div className="flex justify-center mb-6">
-            <div className="overflow-hidden rounded-2xl shadow-2xl w-full max-w-sm md:max-w-md lg:w-96" style={{ height: '442px' }}>
+            <div className="overflow-hidden rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-96 h-64 sm:h-80 md:h-96 lg:h-[442px]">
               <img 
                 src="https://cdn.poehali.dev/files/2e684343-1c6d-4fc9-b7ac-ec0d255a56e5.jpg" 
                 alt="Александр Гонтарь - психолог" 
                 className="w-full h-auto object-cover mx-auto"
-                style={{ marginTop: '-10%', transform: 'scale(1.15)' }}
+                style={{ marginTop: '-30%', transform: 'scale(1.15)' }}
               />
             </div>
           </div>
