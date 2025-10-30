@@ -41,7 +41,7 @@ const Header = ({ onBooking }: HeaderProps) => {
             <a
               key={link.href}
               href={link.href}
-              className={`font-bold text-foreground/70 hover:text-primary transition-colors ${link.bold ? 'font-extrabold border-2 border-black px-4 py-2 rounded-lg' : ''}`}
+              className={`font-bold text-foreground/70 hover:text-primary transition-all duration-300 ${link.bold ? 'font-extrabold border-2 border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white hover:shadow-lg hover:-translate-y-0.5' : ''}`}
             >
               {link.label}
             </a>
