@@ -44,22 +44,22 @@ const Index = () => {
 
   const articles = [
     {
-      title: '5 признаков профессионального выгорания у IT-специалистов',
-      excerpt: 'Как распознать выгорание на ранних стадиях и что с этим делать',
-      date: '15 октября 2024',
-      readTime: '7 мин',
-    },
-    {
-      title: 'Цифровой детокс: с чего начать',
-      excerpt: 'Практические шаги к здоровым отношениям со смартфоном и соцсетями',
-      date: '8 октября 2024',
+      title: 'Почему работа с психологом — это НЕ «просто поговорить»?',
+      excerpt: 'Многие считают, что психолог — это дорогой друг. Но настоящая терапия — это системная работа, похожая на строительство прочного дома',
       readTime: '5 мин',
+      link: 'https://dzen.ru/b/aQJb3zgUXis-XD-v',
     },
     {
-      title: 'Баланс work-life в эпоху удаленки',
-      excerpt: 'Как создать границы между работой и личной жизнью дома',
-      date: '1 октября 2024',
-      readTime: '6 мин',
+      title: 'Нейропластичность: Как «перепрошить» мозг через простые привычки',
+      excerpt: 'Почему 92% людей бросают новогодние резолюции к февралю? Ответ кроется в устройстве нашего мозга и нейропластичности',
+      readTime: '7 мин',
+      link: 'https://dzen.ru/a/aP5VLw6wRwVdZlsx',
+    },
+    {
+      title: 'Не сила воли, а химия: как гормоны крадут энергию и продуктивность',
+      excerpt: 'Ваше настроение, энергия и способность работать — это результат работы гормональной системы. И что с этим делать',
+      readTime: '8 мин',
+      link: 'https://dzen.ru/a/aPpZsjMyvXILBC6e',
     },
   ];
 
@@ -275,17 +275,11 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-6">
               {articles.map((article, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer group" asChild>
-                  <a href="https://dzen.ru/id/68f6621b6539c44524418486" target="_blank" rel="noopener noreferrer">
+                  <a href={article.link} target="_blank" rel="noopener noreferrer">
                     <CardHeader>
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
-                        <div className="flex items-center gap-1">
-                          <Icon name="Calendar" size={14} />
-                          <span>{article.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Icon name="Clock" size={14} />
-                          <span>{article.readTime}</span>
-                        </div>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                        <Icon name="Clock" size={14} />
+                        <span>{article.readTime}</span>
                       </div>
                       <CardTitle className="text-xl group-hover:text-primary transition-colors">
                         {article.title}
@@ -293,9 +287,9 @@ const Index = () => {
                       <CardDescription className="text-base">{article.excerpt}</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-primary flex items-center">
+                      <div className="text-primary flex items-center font-medium">
                         Читать в Дзен
-                        <Icon name="ArrowRight" size={16} className="ml-1" />
+                        <Icon name="ArrowRight" size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </CardContent>
                   </a>
