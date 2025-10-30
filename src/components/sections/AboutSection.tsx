@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const [diplomaOpen, setDiplomaOpen] = useState(false);
 
   return (
     <section id="about" className="py-20 bg-white">
@@ -38,13 +41,25 @@ const AboutSection = () => {
                 </p>
               </div>
               <div className="space-y-3 pt-4">
-                <div className="flex items-start gap-3">
-                  <Icon name="GraduationCap" className="text-primary flex-shrink-0 mt-1" size={24} />
-                  <div className="flex flex-col">
-                    <span className="font-medium">Психолог, Преподаватель психологии</span>
-                    <span className="text-sm text-muted-foreground">Московский Социально-Педагогический институт</span>
-                  </div>
-                </div>
+                <Dialog open={diplomaOpen} onOpenChange={setDiplomaOpen}>
+                  <DialogTrigger asChild>
+                    <div className="flex items-start gap-3 cursor-pointer hover:bg-primary/5 p-3 rounded-lg transition-colors">
+                      <Icon name="GraduationCap" className="text-primary flex-shrink-0 mt-1" size={24} />
+                      <div className="flex flex-col">
+                        <span className="font-medium">Психолог, Преподаватель психологии</span>
+                        <span className="text-sm text-muted-foreground">Московский Социально-Педагогический институт, 2010</span>
+                        <span className="text-xs text-primary mt-1">Нажмите для просмотра диплома</span>
+                      </div>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto">
+                    <img 
+                      src="https://cdn.poehali.dev/files/1176326b-82b8-4f33-9b20-5d8e2a72e984.jpg" 
+                      alt="Диплом психолога Александра Гонтаря" 
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </DialogContent>
+                </Dialog>
                 <div className="flex items-center gap-3">
                   <Icon name="Award" className="text-primary" size={24} />
                   <span>Сертифицированный специалист психологии менеджмента</span>
