@@ -33,7 +33,7 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`max-w-6xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-12">
@@ -73,15 +73,15 @@ const ProcessSection = () => {
                 саморегуляции и научить профилактике выгорания в будущем
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <div className="px-4 py-2 bg-white rounded-full text-sm font-medium">
+                <div className="px-4 py-2 rounded-full text-sm font-medium">
                   <Icon name="Brain" size={16} className="inline mr-1 text-primary" />
                   КПТ-подход
                 </div>
-                <div className="px-4 py-2 bg-white rounded-full text-sm font-medium">
+                <div className="px-4 py-2 rounded-full text-sm font-medium">
                   <Icon name="Clock" size={16} className="inline mr-1 text-primary" />
                   8 сессий
                 </div>
-                <div className="px-4 py-2 bg-white rounded-full text-sm font-medium">
+                <div className="px-4 py-2 rounded-full text-sm font-medium">
                   <Icon name="TrendingUp" size={16} className="inline mr-1 text-primary" />
                   Устойчивый результат
                 </div>

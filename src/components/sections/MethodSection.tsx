@@ -53,7 +53,7 @@ const MethodSection = () => {
             ))}
           </div>
 
-          <Card className="bg-white border-2 border-primary/20">
+          <Card className="border-2 border-primary/20">
             <CardContent className="p-8">
               <div className="prose prose-lg max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-4">
