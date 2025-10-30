@@ -2,12 +2,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const SocialSection = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section className="py-16 bg-gradient-to-br from-primary/5 to-accent/20">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto space-y-8">
+        <div ref={ref} className={`max-w-6xl mx-auto space-y-8 scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">Оставайтесь на связи</h3>
             <p className="text-xl text-muted-foreground">

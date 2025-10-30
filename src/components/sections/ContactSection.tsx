@@ -7,12 +7,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface ContactSectionProps {
   onBooking: () => void;
 }
 
 const ContactSection = ({ onBooking }: ContactSectionProps) => {
+  const { ref, isVisible } = useScrollReveal();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +38,7 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div ref={ref} className={`max-w-4xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-16">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">Запись на консультацию</h3>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

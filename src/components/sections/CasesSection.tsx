@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface CaseItem {
   title: string;
@@ -15,10 +16,12 @@ interface CasesSectionProps {
 }
 
 const CasesSection = ({ cases }: CasesSectionProps) => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="cases" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div ref={ref} className={`max-w-6xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-16">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">Реальные истории изменений</h3>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
