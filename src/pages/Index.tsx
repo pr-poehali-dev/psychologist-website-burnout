@@ -116,7 +116,14 @@ const Index = () => {
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-primary">Александр Гонтарь</h1>
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://cdn.poehali.dev/files/7b4fbc90-0cc7-405e-912a-429cde9d865e.jpg" 
+              alt="Александр Гонтарь" 
+              className="w-12 h-12 rounded-full object-cover border-2 border-primary"
+            />
+            <h1 className="text-2xl font-bold text-primary">Александр Гонтарь</h1>
+          </div>
           <nav className="hidden md:flex gap-6">
             <a href="#about" className="text-foreground/70 hover:text-primary transition-colors">О специалисте</a>
             <a href="#services" className="text-foreground/70 hover:text-primary transition-colors">Услуги</a>

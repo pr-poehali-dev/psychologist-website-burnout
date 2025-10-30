@@ -12,8 +12,12 @@ const Manifesto = () => {
       <header className="border-b sticky top-0 bg-background/95 backdrop-blur-sm z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2">
-              <Icon name="Brain" className="text-primary" size={32} />
+            <Link to="/" className="flex items-center gap-3">
+              <img 
+                src="https://cdn.poehali.dev/files/7b4fbc90-0cc7-405e-912a-429cde9d865e.jpg" 
+                alt="Александр Гонтарь" 
+                className="w-12 h-12 rounded-full object-cover border-2 border-primary"
+              />
               <span className="text-xl font-semibold">Александр Гонтарь</span>
             </Link>
             <Button asChild>
