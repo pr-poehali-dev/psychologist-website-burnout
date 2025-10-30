@@ -13,13 +13,15 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
     <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
-          <div className="flex justify-center mb-6 overflow-hidden rounded-2xl shadow-2xl" style={{ width: '368px', height: '442px' }}>
-            <img 
-              src="https://cdn.poehali.dev/files/2e684343-1c6d-4fc9-b7ac-ec0d255a56e5.jpg" 
-              alt="Александр Гонтарь - психолог" 
-              className="w-full h-auto object-cover"
-              style={{ marginTop: '-10%', transform: 'scale(1.15)' }}
-            />
+          <div className="flex justify-center mb-6">
+            <div className="overflow-hidden rounded-2xl shadow-2xl w-full max-w-sm md:max-w-md lg:w-96" style={{ height: '442px' }}>
+              <img 
+                src="https://cdn.poehali.dev/files/2e684343-1c6d-4fc9-b7ac-ec0d255a56e5.jpg" 
+                alt="Александр Гонтарь - психолог" 
+                className="w-full h-auto object-cover mx-auto"
+                style={{ marginTop: '-10%', transform: 'scale(1.15)' }}
+              />
+            </div>
           </div>
           <Badge variant="outline" className="text-primary border-primary">Александр Гонтарь — ваш психолог</Badge>
           <h2 className="text-4xl md:text-6xl font-bold leading-tight">
