@@ -300,74 +300,38 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Subscribe Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-accent/20">
+      {/* Telegram Subscribe Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto space-y-8">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">Оставайтесь на связи</h3>
-              <p className="text-xl text-muted-foreground">
-                Подписывайтесь на мои каналы для получения новых материалов
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Dzen Widget */}
-              <Card className="border-2 border-primary/20 shadow-xl">
-                <CardHeader>
-                  <Badge variant="outline" className="text-primary border-primary w-fit mb-2">
-                    Дзен-канал
-                  </Badge>
-                  <CardTitle className="text-2xl">Длинные статьи и исследования</CardTitle>
-                  <CardDescription className="text-base">
-                    Глубокие материалы о психологии выгорания, нейробиологии привычек и доказательных методах
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="bg-white p-4 rounded-xl shadow-md w-fit mx-auto">
-                    <img 
-                      src="https://cdn.poehali.dev/files/b21b0184-8959-4b53-b175-306015655517.png" 
-                      alt="QR-код канала в Дзен" 
-                      className="w-48 h-48 object-contain"
-                    />
-                  </div>
-                  <Button asChild size="lg" className="w-full">
-                    <a href="https://dzen.ru/id/68f6621b6539c44524418486?share_to=link" target="_blank" rel="noopener noreferrer">
-                      <Icon name="ExternalLink" size={18} className="mr-2" />
-                      Перейти на канал
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Telegram Widget */}
-              <Card className="border-2 border-blue-500/20 shadow-xl">
-                <CardHeader>
-                  <Badge variant="outline" className="text-blue-600 border-blue-600 w-fit mb-2">
-                    Telegram-канал
-                  </Badge>
-                  <CardTitle className="text-2xl">Быстрые инсайты и советы</CardTitle>
-                  <CardDescription className="text-base">
-                    Короткие посты, практические техники и актуальные материалы каждый день
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="bg-white p-4 rounded-xl shadow-md w-fit mx-auto">
-                    <img 
-                      src="https://cdn.poehali.dev/files/4267afa7-4bb8-44d6-93dd-5e9c680f1373.png" 
-                      alt="QR-код Telegram канала @Algonpsycholog" 
-                      className="w-48 h-48 object-contain"
-                    />
-                  </div>
-                  <Button asChild size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
-                    <a href="https://t.me/Algonpsycholog" target="_blank" rel="noopener noreferrer">
-                      <Icon name="Send" size={18} className="mr-2" />
-                      Подписаться в Telegram
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+          <div className="max-w-3xl mx-auto">
+            <Card className="border-2 border-blue-500/20 shadow-xl">
+              <CardHeader className="text-center">
+                <Badge variant="outline" className="text-blue-600 border-blue-600 w-fit mx-auto mb-3">
+                  Telegram-канал
+                </Badge>
+                <CardTitle className="text-3xl md:text-4xl mb-3">
+                  Подписывайтесь на мой канал
+                </CardTitle>
+                <CardDescription className="text-lg">
+                  Короткие посты, практические техники и актуальные материалы о психологии выгорания каждый день
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-white p-6 rounded-xl shadow-md w-fit mx-auto">
+                  <img 
+                    src="https://cdn.poehali.dev/files/4267afa7-4bb8-44d6-93dd-5e9c680f1373.png" 
+                    alt="QR-код Telegram канала @Algonpsycholog" 
+                    className="w-64 h-64 object-contain"
+                  />
+                </div>
+                <Button asChild size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-6">
+                  <a href="https://t.me/Algonpsycholog" target="_blank" rel="noopener noreferrer">
+                    <Icon name="Send" size={20} className="mr-2" />
+                    Подписаться в Telegram
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
