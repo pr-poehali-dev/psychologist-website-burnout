@@ -300,6 +300,54 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Dzen Subscribe Widget */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 to-accent/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 border-primary/20 shadow-xl overflow-hidden">
+              <div className="grid md:grid-cols-2 gap-8 p-8">
+                <div className="space-y-6 flex flex-col justify-center">
+                  <div className="space-y-3">
+                    <Badge variant="outline" className="text-primary border-primary w-fit">
+                      Дзен-канал
+                    </Badge>
+                    <h3 className="text-3xl font-bold">
+                      Подписывайтесь на мой канал
+                    </h3>
+                    <p className="text-muted-foreground text-lg">
+                      Регулярно публикую статьи о психологии выгорания, нейробиологии привычек и доказательных методах работы с собой
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <Button asChild size="lg" className="w-full md:w-auto">
+                      <a href="https://dzen.ru/id/68f6621b6539c44524418486?share_to=link" target="_blank" rel="noopener noreferrer">
+                        <Icon name="ExternalLink" size={18} className="mr-2" />
+                        Перейти на канал
+                      </a>
+                    </Button>
+                    <p className="text-sm text-muted-foreground">
+                      Или отсканируйте QR-код справа
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center">
+                  <div className="bg-white p-6 rounded-2xl shadow-lg">
+                    <img 
+                      src="https://cdn.poehali.dev/files/b21b0184-8959-4b53-b175-306015655517.png" 
+                      alt="QR-код канала в Дзен" 
+                      className="w-64 h-64 object-contain"
+                    />
+                    <p className="text-center text-sm text-muted-foreground mt-4">
+                      Наведите камеру телефона
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Cases Section */}
       <section id="cases" className="py-20 bg-white">
         <div className="container mx-auto px-4">
