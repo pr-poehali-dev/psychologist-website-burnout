@@ -26,7 +26,6 @@ const Manifesto = () => {
       <main className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="space-y-12">
           <div className="text-center space-y-4">
-            <div className="text-6xl">🏴‍☠️</div>
             <h1 className="text-4xl md:text-5xl font-bold">
               Манифест доказательного психолога
             </h1>
