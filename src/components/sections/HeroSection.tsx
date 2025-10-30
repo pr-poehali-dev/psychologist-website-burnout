@@ -13,6 +13,13 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
     <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://cdn.poehali.dev/files/2e684343-1c6d-4fc9-b7ac-ec0d255a56e5.jpg" 
+              alt="Александр Гонтарь - психолог" 
+              className="w-48 h-48 rounded-full object-cover border-4 border-primary shadow-2xl"
+            />
+          </div>
           <Badge variant="outline" className="text-primary border-primary">Александр Гонтарь — ваш психолог</Badge>
           <h2 className="text-4xl md:text-6xl font-bold leading-tight">
             Путь от выгорания к <span className="text-primary">балансу</span> и энергии
