@@ -63,6 +63,33 @@ const Index = () => {
     },
   ];
 
+  const cases = [
+    {
+      title: 'Из выгорания в осознанную карьеру',
+      role: 'Senior Developer, 35 лет',
+      problem: 'Работал по 12 часов в день, потерял интерес к программированию, начались панические атаки перед рабочими созвонами',
+      solution: 'За 3 месяца работы научился выстраивать границы, освоил техники саморегуляции, пересмотрел карьерные приоритеты',
+      result: 'Перешёл на позицию с меньшей нагрузкой, вернул интерес к коду, панические атаки прошли. Начал уделять время хобби',
+      icon: 'TrendingUp',
+    },
+    {
+      title: 'Свобода от телефонной зависимости',
+      role: 'Product Manager, 29 лет',
+      problem: 'Проверяла телефон более 200 раз в день, не могла заснуть без скролла соцсетей, постоянное чувство тревоги',
+      solution: 'Программа цифрового детокса: постепенное снижение времени в телефоне, замена привычек, работа с тревогой',
+      result: 'Экранное время снизилось с 7 до 2 часов. Восстановился сон, появилось время на чтение и спорт. Тревожность снизилась на 70%',
+      icon: 'Smartphone',
+    },
+    {
+      title: 'Баланс между работой и семьёй',
+      role: 'Tech Lead, 42 года',
+      problem: 'Удалёнка размыла границы — работал до ночи, дети росли без внимания, конфликты с супругой',
+      solution: 'Выстраивание рабочих границ, тайм-менеджмент, работа с чувством вины, семейная терапия',
+      result: 'Установил чёткий график работы, начал проводить вечера с семьёй. Отношения улучшились, стал более продуктивным',
+      icon: 'Heart',
+    },
+  ];
+
   const reviews = [
     {
       name: 'Алексей М.',
@@ -91,10 +118,11 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-primary">Александр Гонтарь</h1>
           <nav className="hidden md:flex gap-6">
+            <a href="#about" className="text-foreground/70 hover:text-primary transition-colors">О специалисте</a>
             <a href="#services" className="text-foreground/70 hover:text-primary transition-colors">Услуги</a>
+            <a href="#cases" className="text-foreground/70 hover:text-primary transition-colors">Кейсы</a>
             <a href="#articles" className="text-foreground/70 hover:text-primary transition-colors">Статьи</a>
             <a href="#reviews" className="text-foreground/70 hover:text-primary transition-colors">Отзывы</a>
-            <a href="#about" className="text-foreground/70 hover:text-primary transition-colors">О специалисте</a>
           </nav>
           <Button className="hidden md:flex" onClick={handleBooking}>
             <Icon name="Calendar" size={18} className="mr-2" />
@@ -254,6 +282,56 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Cases Section */}
+      <section id="cases" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Реальные истории изменений</h3>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Кейсы клиентов, которые прошли путь от выгорания к балансу
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {cases.map((caseItem, index) => (
+                <Card key={index} className="hover:shadow-xl transition-all hover:-translate-y-1">
+                  <CardHeader>
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                      <Icon name={caseItem.icon} className="text-primary" size={28} />
+                    </div>
+                    <CardTitle className="text-xl mb-2">{caseItem.title}</CardTitle>
+                    <CardDescription className="font-medium text-foreground/80">{caseItem.role}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <div className="flex items-start gap-2 mb-2">
+                        <Icon name="AlertCircle" size={16} className="text-destructive mt-0.5 flex-shrink-0" />
+                        <span className="text-sm font-semibold text-destructive">Проблема:</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{caseItem.problem}</p>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-2 mb-2">
+                        <Icon name="Lightbulb" size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-sm font-semibold text-primary">Решение:</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{caseItem.solution}</p>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-2 mb-2">
+                        <Icon name="CheckCircle" size={16} className="text-green-600 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm font-semibold text-green-600">Результат:</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{caseItem.result}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Reviews Section */}
       <section id="reviews" className="py-20">
         <div className="container mx-auto px-4">
@@ -316,10 +394,11 @@ const Index = () => {
               <div className="space-y-4">
                 <h5 className="font-semibold">Навигация</h5>
                 <nav className="flex flex-col gap-2 text-sm">
+                  <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">О специалисте</a>
                   <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Услуги</a>
+                  <a href="#cases" className="text-muted-foreground hover:text-primary transition-colors">Кейсы</a>
                   <a href="#articles" className="text-muted-foreground hover:text-primary transition-colors">Статьи</a>
                   <a href="#reviews" className="text-muted-foreground hover:text-primary transition-colors">Отзывы</a>
-                  <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">О специалисте</a>
                 </nav>
               </div>
               <div className="space-y-4">
