@@ -300,50 +300,73 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Dzen Subscribe Widget */}
+      {/* Subscribe Section */}
       <section className="py-16 bg-gradient-to-br from-primary/5 to-accent/20">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-2 border-primary/20 shadow-xl overflow-hidden">
-              <div className="grid md:grid-cols-2 gap-8 p-8">
-                <div className="space-y-6 flex flex-col justify-center">
-                  <div className="space-y-3">
-                    <Badge variant="outline" className="text-primary border-primary w-fit">
-                      Дзен-канал
-                    </Badge>
-                    <h3 className="text-3xl font-bold">
-                      Подписывайтесь на мой канал
-                    </h3>
-                    <p className="text-muted-foreground text-lg">
-                      Регулярно публикую статьи о психологии выгорания, нейробиологии привычек и доказательных методах работы с собой
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    <Button asChild size="lg" className="w-full md:w-auto">
-                      <a href="https://dzen.ru/id/68f6621b6539c44524418486?share_to=link" target="_blank" rel="noopener noreferrer">
-                        <Icon name="ExternalLink" size={18} className="mr-2" />
-                        Перейти на канал
-                      </a>
-                    </Button>
-                    <p className="text-sm text-muted-foreground">
-                      Или отсканируйте QR-код справа
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center">
-                  <div className="bg-white p-6 rounded-2xl shadow-lg">
+          <div className="max-w-6xl mx-auto space-y-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Оставайтесь на связи</h3>
+              <p className="text-xl text-muted-foreground">
+                Подписывайтесь на мои каналы для получения новых материалов
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Dzen Widget */}
+              <Card className="border-2 border-primary/20 shadow-xl">
+                <CardHeader>
+                  <Badge variant="outline" className="text-primary border-primary w-fit mb-2">
+                    Дзен-канал
+                  </Badge>
+                  <CardTitle className="text-2xl">Длинные статьи и исследования</CardTitle>
+                  <CardDescription className="text-base">
+                    Глубокие материалы о психологии выгорания, нейробиологии привычек и доказательных методах
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="bg-white p-4 rounded-xl shadow-md w-fit mx-auto">
                     <img 
                       src="https://cdn.poehali.dev/files/b21b0184-8959-4b53-b175-306015655517.png" 
                       alt="QR-код канала в Дзен" 
-                      className="w-64 h-64 object-contain"
+                      className="w-48 h-48 object-contain"
                     />
-                    <p className="text-center text-sm text-muted-foreground mt-4">
-                      Наведите камеру телефона
-                    </p>
                   </div>
-                </div>
-              </div>
-            </Card>
+                  <Button asChild size="lg" className="w-full">
+                    <a href="https://dzen.ru/id/68f6621b6539c44524418486?share_to=link" target="_blank" rel="noopener noreferrer">
+                      <Icon name="ExternalLink" size={18} className="mr-2" />
+                      Перейти на канал
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Telegram Widget */}
+              <Card className="border-2 border-blue-500/20 shadow-xl">
+                <CardHeader>
+                  <Badge variant="outline" className="text-blue-600 border-blue-600 w-fit mb-2">
+                    Telegram-канал
+                  </Badge>
+                  <CardTitle className="text-2xl">Быстрые инсайты и советы</CardTitle>
+                  <CardDescription className="text-base">
+                    Короткие посты, практические техники и актуальные материалы каждый день
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 p-8 rounded-xl text-center space-y-4">
+                    <div className="w-24 h-24 mx-auto bg-blue-600 rounded-full flex items-center justify-center">
+                      <Icon name="Send" size={48} className="text-white" />
+                    </div>
+                    <p className="font-semibold text-lg">@Algonpsycholog</p>
+                  </div>
+                  <Button asChild size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
+                    <a href="https://t.me/Algonpsycholog" target="_blank" rel="noopener noreferrer">
+                      <Icon name="Send" size={18} className="mr-2" />
+                      Подписаться в Telegram
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
