@@ -8,6 +8,7 @@ import ArticlesSection from '@/components/sections/ArticlesSection';
 import SocialSection from '@/components/sections/SocialSection';
 import CasesSection from '@/components/sections/CasesSection';
 import ReviewsSection from '@/components/sections/ReviewsSection';
+import FAQSection from '@/components/sections/FAQSection';
 import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/sections/Footer';
 
@@ -118,6 +119,7 @@ const Index = () => {
       <SocialSection />
       <CasesSection cases={cases} />
       <ReviewsSection reviews={reviews} />
+      <FAQSection />
       <ContactSection onBooking={handleBooking} />
       <Footer />
     </div>
