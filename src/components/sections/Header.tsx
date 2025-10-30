@@ -38,7 +38,7 @@ const Header = ({ onBooking }: HeaderProps) => {
             alt="Александр Гонтарь" 
             className="w-12 h-12 rounded-full object-cover border-2 border-primary"
           />
-          <h1 className="text-2xl font-bold text-primary">Александр Гонтарь</h1>
+          <h1 className="text-3xl font-extrabold text-primary" style={{ textShadow: '2px 2px 4px rgba(139, 92, 246, 0.3), -1px -1px 2px rgba(139, 92, 246, 0.2)' }}>Александр Гонтарь</h1>
         </div>
 
         <nav className="hidden md:flex gap-6">
