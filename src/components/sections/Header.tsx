@@ -48,7 +48,7 @@ const Header = ({ onBooking }: HeaderProps) => {
           ))}
         </nav>
 
-        <Button className="hidden md:flex" onClick={onBooking}>
+        <Button className="hidden md:flex btn-pulse-glow" onClick={onBooking}>
           <Icon name="Calendar" size={18} className="mr-2" />
           Записаться
         </Button>
