@@ -10,7 +10,7 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
   const yearsOfPractice = new Date().getFullYear() - 2005;
 
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
           <Badge variant="outline" className="text-primary border-primary">Александр Гонтарь — ваш психолог</Badge>
