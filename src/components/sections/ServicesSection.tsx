@@ -19,7 +19,7 @@ const ServicesSection = ({ services, onBooking }: ServicesSectionProps) => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="services" className="py-20">
+    <section id="services" className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-primary/10">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`max-w-6xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-16">

@@ -17,7 +17,7 @@ const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="reviews" className="py-20">
+    <section id="reviews" className="py-20 bg-gradient-to-bl from-primary/8 via-transparent to-primary/5">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`max-w-6xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-16">

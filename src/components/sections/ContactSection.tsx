@@ -36,7 +36,7 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
   };
 
   return (
-    <section id="contact" className="bg-white py-20">
+    <section id="contact" className="py-20 bg-gradient-to-br from-white to-primary/8">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`max-w-4xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-16">
