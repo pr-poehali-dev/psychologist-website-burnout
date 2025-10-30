@@ -8,7 +8,7 @@ const SocialSection = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section className="py-16">
+    <section className="bg-white py-16">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`max-w-4xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-12">

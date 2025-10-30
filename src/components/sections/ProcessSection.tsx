@@ -33,7 +33,7 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section className="py-20">
+    <section className="bg-white py-20">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`max-w-6xl mx-auto scroll-reveal ${isVisible ? 'visible' : ''}`}>
           <div className="text-center mb-12">
