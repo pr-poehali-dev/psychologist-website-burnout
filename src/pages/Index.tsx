@@ -1,5 +1,6 @@
 import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
+import TargetAudienceSection from '@/components/sections/TargetAudienceSection';
 import AboutSection from '@/components/sections/AboutSection';
 import MethodSection from '@/components/sections/MethodSection';
 import ProcessSection from '@/components/sections/ProcessSection';
@@ -111,6 +112,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-white to-accent/20">
       <Header onBooking={handleBooking} />
       <HeroSection onBooking={handleBooking} />
+      <TargetAudienceSection />
       <AboutSection />
       <MethodSection />
       <ProcessSection />
