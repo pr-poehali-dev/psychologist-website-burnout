@@ -120,7 +120,7 @@ const Index = () => {
       <MistakesSection />
       <AboutSection />
       <MethodSection />
-      <ProcessSection />
+      <ProcessSection onBooking={handleBooking} />
       <ServicesSection services={services} onBooking={handleBooking} />
       <ArticlesSection articles={articles} />
       <SocialSection />

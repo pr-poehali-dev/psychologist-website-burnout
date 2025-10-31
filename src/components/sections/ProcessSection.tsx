@@ -1,8 +1,13 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const ProcessSection = () => {
+interface ProcessSectionProps {
+  onBooking?: () => void;
+}
+
+const ProcessSection = ({ onBooking }: ProcessSectionProps) => {
   const { ref, isVisible } = useScrollReveal();
 
   const steps = [
@@ -158,6 +163,17 @@ const ProcessSection = () => {
                 </p>
               </CardContent>
             </Card>
+
+            <div className="text-center mt-8">
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-6 btn-pulse-glow"
+                onClick={onBooking}
+              >
+                <Icon name="Rocket" size={20} className="mr-2" />
+                Начать работу
+              </Button>
+            </div>
           </div>
         </div>
       </div>
