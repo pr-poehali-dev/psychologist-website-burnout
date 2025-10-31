@@ -2,13 +2,14 @@ import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import TargetAudienceSection from '@/components/sections/TargetAudienceSection';
 import ProblemSection from '@/components/sections/ProblemSection';
+import CasesSection from '@/components/sections/CasesSection';
+import MistakesSection from '@/components/sections/MistakesSection';
 import AboutSection from '@/components/sections/AboutSection';
 import MethodSection from '@/components/sections/MethodSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import ArticlesSection from '@/components/sections/ArticlesSection';
 import SocialSection from '@/components/sections/SocialSection';
-import CasesSection from '@/components/sections/CasesSection';
 import ReviewsSection from '@/components/sections/ReviewsSection';
 import FAQSection from '@/components/sections/FAQSection';
 import ContactSection from '@/components/sections/ContactSection';
@@ -116,6 +117,7 @@ const Index = () => {
       <TargetAudienceSection />
       <ProblemSection />
       <CasesSection cases={cases} />
+      <MistakesSection />
       <AboutSection />
       <MethodSection />
       <ProcessSection />
