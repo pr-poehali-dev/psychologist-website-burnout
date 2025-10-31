@@ -24,7 +24,7 @@ const Header = ({ onBooking }: HeaderProps) => {
     { href: '#about', label: 'Обо мне' },
     { href: '#services', label: 'Услуги' },
     { href: '#cases', label: 'Кейсы' },
-    { href: '/manifesto', label: 'Манифест', bold: true },
+    { href: '/manifesto', label: 'Манифест' },
     { href: '#articles', label: 'Статьи' },
     { href: '#reviews', label: 'Отзывы' },
   ];
@@ -36,12 +36,12 @@ const Header = ({ onBooking }: HeaderProps) => {
           <h1 className="text-3xl font-extrabold text-primary" style={{ textShadow: '2px 2px 4px rgba(139, 92, 246, 0.3), -1px -1px 2px rgba(139, 92, 246, 0.2)' }}>Александр Гонтарь</h1>
         </div>
 
-        <nav className="hidden md:flex gap-6">
+        <nav className="hidden md:flex gap-6 items-center">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`font-bold text-foreground/70 hover:text-primary transition-all duration-300 ${link.bold ? 'font-extrabold border-2 border-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white hover:shadow-lg hover:-translate-y-0.5' : ''}`}
+              className="font-bold text-foreground/70 hover:text-primary transition-all duration-300"
             >
               {link.label}
             </a>
@@ -69,7 +69,7 @@ const Header = ({ onBooking }: HeaderProps) => {
                   key={link.href}
                   href={link.href}
                   onClick={handleNavClick}
-                  className={`text-lg font-bold text-foreground/70 hover:text-primary transition-all duration-300 py-2 ${link.bold ? 'font-extrabold border-2 border-primary px-4 rounded-lg hover:bg-primary hover:text-white' : ''}`}
+                  className="text-lg font-bold text-foreground/70 hover:text-primary transition-all duration-300 py-2"
                 >
                   {link.label}
                 </a>
