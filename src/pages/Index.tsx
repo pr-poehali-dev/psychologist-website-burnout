@@ -63,11 +63,11 @@ const Index = () => {
 
   const cases = [
     {
-      title: 'Из выгорания в осознанную карьеру',
-      role: 'Senior Developer, 35 лет',
-      problem: 'Работал по 12 часов в день, потерял интерес к программированию, начались панические атаки перед рабочими созвонами',
-      solution: 'За 3 месяца работы научился выстраивать границы, освоил техники саморегуляции, пересмотрел карьерные приоритеты',
-      result: 'Перешёл на позицию с меньшей нагрузкой, вернул интерес к коду, панические атаки прошли. Начал уделять время хобби',
+      title: 'Артем, руководитель IT-отдела',
+      role: 'Руководитель IT-отдела',
+      problem: 'Пришел с жалобами на полное эмоциональное истощение, бессонницу и сильное снижение производительности',
+      solution: 'После 6 сессий вернул контроль над рабочим графиком, внедрил «цифровой карантин», что сократило его рабочее время на 2 часа в день без потери эффективности',
+      result: 'Показатели по тесту MBI снизились с критических до умеренных. Сейчас Артем справляется с нагрузкой без ощущения опустошения',
       icon: 'TrendingUp',
     },
     {
@@ -115,13 +115,13 @@ const Index = () => {
       <HeroSection onBooking={handleBooking} />
       <TargetAudienceSection />
       <ProblemSection />
+      <CasesSection cases={cases} />
       <AboutSection />
       <MethodSection />
       <ProcessSection />
       <ServicesSection services={services} onBooking={handleBooking} />
       <ArticlesSection articles={articles} />
       <SocialSection />
-      <CasesSection cases={cases} />
       <ReviewsSection reviews={reviews} />
       <FAQSection />
       <ContactSection onBooking={handleBooking} />

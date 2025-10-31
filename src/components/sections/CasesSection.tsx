@@ -64,6 +64,9 @@ const CasesSection = ({ cases }: CasesSectionProps) => {
               </Card>
             ))}
           </div>
+          <p className="text-center text-sm text-muted-foreground mt-8 italic">
+            Тест MBI-HSS — золотой стандарт диагностики выгорания, используемый во всем мире
+          </p>
         </div>
       </div>
     </section>
