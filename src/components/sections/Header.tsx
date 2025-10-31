@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import {
@@ -15,10 +15,39 @@ interface HeaderProps {
 
 const Header = ({ onBooking }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   const handleNavClick = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks
+        .filter(link => link.href.startsWith('#'))
+        .map(link => link.href.substring(1));
+      
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(`#${sectionId}`);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { href: '#about', label: 'Обо мне' },
@@ -41,7 +70,7 @@ const Header = ({ onBooking }: HeaderProps) => {
             <a
               key={link.href}
               href={link.href}
-              className={`font-bold text-foreground/70 hover:text-primary transition-all duration-300 ${link.href === '/manifesto' ? 'border-2 border-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white' : ''}`}
+              className={`font-bold transition-all duration-300 ${activeSection === link.href ? 'text-primary border-2 border-primary px-4 py-2 rounded-lg' : 'text-foreground/70 hover:text-primary'}`}
             >
               {link.label}
             </a>
@@ -69,7 +98,7 @@ const Header = ({ onBooking }: HeaderProps) => {
                   key={link.href}
                   href={link.href}
                   onClick={handleNavClick}
-                  className={`text-lg font-bold text-foreground/70 hover:text-primary transition-all duration-300 py-2 ${link.href === '/manifesto' ? 'border-2 border-primary px-4 rounded-lg hover:bg-primary hover:text-white' : ''}`}
+                  className={`text-lg font-bold transition-all duration-300 py-2 ${activeSection === link.href ? 'text-primary border-2 border-primary px-4 rounded-lg' : 'text-foreground/70 hover:text-primary'}`}
                 >
                   {link.label}
                 </a>
