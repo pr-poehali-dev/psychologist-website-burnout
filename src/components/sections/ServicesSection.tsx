@@ -30,7 +30,7 @@ const ServicesSection = ({ services, onBooking }: ServicesSectionProps) => {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all hover:-translate-y-1 border-2">
+              <Card key={index} className="hover:shadow-xl transition-all hover:-translate-y-1 border-2 flex flex-col">
                 <CardHeader>
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name={service.icon} className="text-primary" size={28} />
@@ -38,7 +38,7 @@ const ServicesSection = ({ services, onBooking }: ServicesSectionProps) => {
                   <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="mt-auto">
                   <div className="flex items-center text-sm text-muted-foreground mb-4">
                     <Icon name="Clock" size={16} className="mr-2" />
                     {service.duration}
