@@ -64,30 +64,101 @@ const ProcessSection = () => {
             ))}
           </div>
 
-          <Card className="bg-gradient-to-br from-primary/5 to-accent/10 border-2 border-primary/20">
-            <CardContent className="p-8 text-center">
-              <Icon name="Sparkles" size={40} className="text-primary mx-auto mb-4" />
-              <h4 className="text-2xl font-bold mb-3">Цель программы</h4>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Восстановить эмоционально-энергетический баланс, сформировать устойчивые навыки 
-                саморегуляции и научить профилактике выгорания в будущем
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <div className="px-4 py-2 rounded-full text-sm font-medium">
-                  <Icon name="Brain" size={16} className="inline mr-1 text-primary" />
-                  КПТ-подход
+          <div className="space-y-6">
+            <Card className="bg-gradient-to-br from-primary/5 to-accent/10 border-2 border-primary/20">
+              <CardContent className="p-6 md:p-8">
+                <h4 className="text-xl md:text-2xl font-bold mb-4">Работа строится на принципах доказательной психологии (КПТ)</h4>
+                <div className="space-y-3 text-sm md:text-base text-foreground/80">
+                  <p>• Структурированный 8-сессионный протокол терапии выгорания</p>
+                  <p>• Работа с измеримыми показателями через «Энергетический аудит»</p>
+                  <p>• Инструментарий: от дыхательных практик до построения жизненного баланса</p>
                 </div>
-                <div className="px-4 py-2 rounded-full text-sm font-medium">
-                  <Icon name="Clock" size={16} className="inline mr-1 text-primary" />
-                  8 сессий
-                </div>
-                <div className="px-4 py-2 rounded-full text-sm font-medium">
-                  <Icon name="TrendingUp" size={16} className="inline mr-1 text-primary" />
-                  Устойчивый результат
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <Card className="border-2 border-green-200 bg-green-50/50">
+                <CardContent className="p-4">
+                  <div className="flex gap-3 items-start">
+                    <Icon name="CheckCircle" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-sm md:text-base mb-1">Протокол с измеримым результатом</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">Прогресс виден после 3-4 сессии</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-green-200 bg-green-50/50">
+                <CardContent className="p-4">
+                  <div className="flex gap-3 items-start">
+                    <Icon name="CheckCircle" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-sm md:text-base mb-1">Онлайн или оффлайн в Москве</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">Сессия длится 60 минут</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-green-200 bg-green-50/50">
+                <CardContent className="p-4">
+                  <div className="flex gap-3 items-start">
+                    <Icon name="CheckCircle" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-sm md:text-base mb-1">Реальные инструменты</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">Адаптированы для занятых специалистов</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-green-200 bg-green-50/50">
+                <CardContent className="p-4">
+                  <div className="flex gap-3 items-start">
+                    <Icon name="CheckCircle" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-sm md:text-base mb-1">Измеримый результат</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">От теста MBI до дневника энергии</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-green-200 bg-green-50/50">
+                <CardContent className="p-4">
+                  <div className="flex gap-3 items-start">
+                    <Icon name="CheckCircle" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-sm md:text-base mb-1">Поддержка между сессиями</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">Чат для вопросов и помощи</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-green-200 bg-green-50/50">
+                <CardContent className="p-4">
+                  <div className="flex gap-3 items-start">
+                    <Icon name="CheckCircle" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-sm md:text-base mb-1">Системный подход</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">Как инженер по психическому состоянию</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="bg-primary/10 border-2 border-primary/30">
+              <CardContent className="p-6 text-center">
+                <Icon name="TrendingUp" size={32} className="text-primary mx-auto mb-3" />
+                <p className="text-sm md:text-base font-medium text-foreground italic">
+                  «Инвестиция окупается за 2-3 месяца за счёт возвращённой продуктивности и предотвращения ошибок, вызванных усталостью»
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>
