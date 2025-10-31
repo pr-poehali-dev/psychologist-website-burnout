@@ -1,6 +1,7 @@
 import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import TargetAudienceSection from '@/components/sections/TargetAudienceSection';
+import ProblemSection from '@/components/sections/ProblemSection';
 import AboutSection from '@/components/sections/AboutSection';
 import MethodSection from '@/components/sections/MethodSection';
 import ProcessSection from '@/components/sections/ProcessSection';
@@ -113,6 +114,7 @@ const Index = () => {
       <Header onBooking={handleBooking} />
       <HeroSection onBooking={handleBooking} />
       <TargetAudienceSection />
+      <ProblemSection />
       <AboutSection />
       <MethodSection />
       <ProcessSection />
