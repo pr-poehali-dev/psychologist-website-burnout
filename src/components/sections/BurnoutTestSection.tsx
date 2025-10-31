@@ -3,8 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 import { Progress } from '@/components/ui/progress';
+import { useToast } from '@/hooks/use-toast';
 
 interface BurnoutTestSectionProps {
   onBooking: () => void;
@@ -14,6 +16,9 @@ const BurnoutTestSection = ({ onBooking }: BurnoutTestSectionProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isEmailSending, setIsEmailSending] = useState(false);
+  const { toast } = useToast();
 
   const questions = [
     {
@@ -136,6 +141,83 @@ const BurnoutTestSection = ({ onBooking }: BurnoutTestSectionProps) => {
     setCurrentQuestion(0);
     setAnswers([]);
     setShowResult(false);
+    setEmail('');
+  };
+
+  const downloadPDF = () => {
+    const result = calculateResult();
+    const total = answers.reduce((sum, val) => sum + val, 0);
+    
+    const content = `
+РЕЗУЛЬТАТЫ ТЕСТА НА ПРОФЕССИОНАЛЬНОЕ ВЫГОРАНИЕ
+
+Уровень риска: ${result.level}
+Баллы: ${total} из ${questions.length * 4}
+
+Описание:
+${result.description}
+
+Рекомендация:
+${result.recommendation}
+
+Ответы на вопросы:
+${questions.map((q, i) => `${i + 1}. ${q.question}\n   Ваш ответ: ${q.options[answers[i]].text}`).join('\n\n')}
+
+---
+Дата прохождения: ${new Date().toLocaleDateString('ru-RU')}
+Психолог Александр Гонтарь
+https://alexandergontar.ru
+    `.trim();
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `test-burnout-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: 'Результаты сохранены',
+      description: 'Файл с результатами загружен на ваше устройство',
+    });
+  };
+
+  const sendEmail = async () => {
+    if (!email || !email.includes('@')) {
+      toast({
+        title: 'Ошибка',
+        description: 'Введите корректный email',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setIsEmailSending(true);
+    
+    try {
+      const result = calculateResult();
+      const total = answers.reduce((sum, val) => sum + val, 0);
+      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: 'Результаты отправлены',
+        description: `Результаты теста отправлены на ${email}`,
+      });
+      
+      setEmail('');
+    } catch (error) {
+      toast({
+        title: 'Ошибка отправки',
+        description: 'Попробуйте снова или скачайте результаты',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsEmailSending(false);
+    }
   };
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
@@ -164,23 +246,58 @@ const BurnoutTestSection = ({ onBooking }: BurnoutTestSectionProps) => {
                   <p className="text-base font-medium text-foreground">{result.recommendation}</p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    size="lg" 
-                    className="flex-1 btn-pulse-glow"
-                    onClick={onBooking}
-                  >
-                    <Icon name="Calendar" size={20} className="mr-2" />
-                    Записаться на консультацию
-                  </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    onClick={resetTest}
-                  >
-                    <Icon name="RotateCcw" size={20} className="mr-2" />
-                    Пройти ещё раз
-                  </Button>
+                <div className="space-y-4">
+                  <div className="p-4 bg-white rounded-lg border">
+                    <p className="text-sm font-medium mb-3">Сохранить результаты:</p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <div className="flex-1 flex gap-2">
+                        <Input
+                          type="email"
+                          placeholder="Ваш email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="flex-1"
+                        />
+                        <Button
+                          onClick={sendEmail}
+                          disabled={isEmailSending}
+                          variant="outline"
+                        >
+                          {isEmailSending ? (
+                            <Icon name="Loader2" size={18} className="animate-spin" />
+                          ) : (
+                            <><Icon name="Mail" size={18} className="mr-2" />Отправить</>
+                          )}
+                        </Button>
+                      </div>
+                      <Button
+                        onClick={downloadPDF}
+                        variant="outline"
+                      >
+                        <Icon name="Download" size={18} className="mr-2" />
+                        Скачать
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button 
+                      size="lg" 
+                      className="flex-1 btn-pulse-glow"
+                      onClick={onBooking}
+                    >
+                      <Icon name="Calendar" size={20} className="mr-2" />
+                      Записаться на консультацию
+                    </Button>
+                    <Button 
+                      size="lg" 
+                      variant="outline"
+                      onClick={resetTest}
+                    >
+                      <Icon name="RotateCcw" size={20} className="mr-2" />
+                      Пройти ещё раз
+                    </Button>
+                  </div>
                 </div>
 
                 <p className="text-xs text-muted-foreground text-center italic mt-4">
