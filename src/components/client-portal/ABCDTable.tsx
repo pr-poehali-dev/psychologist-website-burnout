@@ -112,35 +112,35 @@ const ABCDTable = () => {
               <tr>
                 <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
                   <div className="space-y-1">
-                    <div>А</div>
+                    <div>A</div>
                     <div className="text-xs font-normal">Активирующее событие</div>
                     <div className="text-xs font-normal opacity-80">(что произошло?)</div>
                   </div>
                 </th>
                 <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
                   <div className="space-y-1">
-                    <div>Б</div>
+                    <div>B</div>
                     <div className="text-xs font-normal">Убеждения</div>
                     <div className="text-xs font-normal opacity-80">(что я подумал?)</div>
                   </div>
                 </th>
                 <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
                   <div className="space-y-1">
-                    <div>В</div>
+                    <div>C</div>
                     <div className="text-xs font-normal">Последствия</div>
                     <div className="text-xs font-normal opacity-80">(что я почувствовал?)</div>
                   </div>
                 </th>
                 <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
                   <div className="space-y-1">
-                    <div>Г</div>
+                    <div>D</div>
                     <div className="text-xs font-normal">Оспаривание</div>
                     <div className="text-xs font-normal opacity-80">(альтернативы?)</div>
                   </div>
                 </th>
                 <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
                   <div className="space-y-1">
-                    <div>Д</div>
+                    <div>E</div>
                     <div className="text-xs font-normal">Новая реакция</div>
                     <div className="text-xs font-normal opacity-80">(что изменилось?)</div>
                   </div>
