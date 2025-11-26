@@ -46,7 +46,7 @@ const ClientPortal = () => {
     { name: 'Окружение', score: 5, negative: '', positive: '', actions: '' },
   ]);
 
-  const correctPassword = 'client2024';
+  const correctPassword = 'client';
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
