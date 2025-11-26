@@ -334,6 +334,85 @@ const DepressionTestSection = ({ onBooking }: DepressionTestSectionProps) => {
     doc.save(`BDI-II_rezultaty_${date.replace(/\./g, '-')}.pdf`);
   };
 
+  const downloadHistoryPDF = () => {
+    if (testHistory.length === 0) return;
+
+    const doc = new jsPDF();
+    const date = new Date().toLocaleDateString('ru-RU');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+    doc.text('Istoriya rezultatov BDI-II', 105, 20, { align: 'center' });
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`Data otcheta: ${date}`, 105, 30, { align: 'center' });
+    
+    doc.setDrawColor(200, 200, 200);
+    doc.line(20, 35, 190, 35);
+
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Dinamika rezultatov:', 20, 50);
+
+    let yPos = 65;
+    testHistory.forEach((result, index) => {
+      const level = result.score <= 13 ? 'Minimalnaya' : result.score <= 19 ? 'Lyogkaya' : result.score <= 28 ? 'Umerennaya' : 'Tyazhyolaya';
+      const color = result.score <= 13 ? [22, 163, 74] : result.score <= 19 ? [202, 138, 4] : result.score <= 28 ? [234, 88, 12] : [220, 38, 38];
+      
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(0, 0, 0);
+      doc.text(`${index + 1}. ${result.date}`, 25, yPos);
+      
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...color);
+      doc.text(`${result.score} / 63`, 70, yPos);
+      
+      doc.setTextColor(80, 80, 80);
+      doc.text(`(${level})`, 100, yPos);
+      
+      yPos += 10;
+      
+      if (yPos > 270 && index < testHistory.length - 1) {
+        doc.addPage();
+        yPos = 20;
+      }
+    });
+
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'italic');
+    
+    const lastYPos = yPos + 15;
+    if (lastYPos > 250) {
+      doc.addPage();
+      doc.text('Legenda:', 20, 20);
+      doc.setFont('helvetica', 'normal');
+      doc.text('0-13: Minimalnaya depressiya', 25, 30);
+      doc.text('14-19: Lyogkaya depressiya', 25, 37);
+      doc.text('20-28: Umerennaya depressiya', 25, 44);
+      doc.text('29-63: Tyazhyolaya depressiya', 25, 51);
+    } else {
+      doc.text('Legenda:', 20, lastYPos);
+      doc.setFont('helvetica', 'normal');
+      doc.text('0-13: Minimalnaya depressiya', 25, lastYPos + 10);
+      doc.text('14-19: Lyogkaya depressiya', 25, lastYPos + 17);
+      doc.text('20-28: Umerennaya depressiya', 25, lastYPos + 24);
+      doc.text('29-63: Tyazhyolaya depressiya', 25, lastYPos + 31);
+    }
+
+    const pages = doc.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+      doc.setPage(i);
+      doc.setFontSize(9);
+      doc.setTextColor(100, 100, 100);
+      doc.text(`Stranica ${i} iz ${pages}`, 105, 285, { align: 'center' });
+    }
+
+    doc.save(`BDI-II_istoriya_${date.replace(/\./g, '-')}.pdf`);
+  };
+
   const calculateScore = () => {
     return answers.reduce((sum, val) => sum + val, 0);
   };
@@ -457,9 +536,20 @@ const DepressionTestSection = ({ onBooking }: DepressionTestSectionProps) => {
                       />
                     </LineChart>
                   </ResponsiveContainer>
-                  <p className="text-sm text-gray-600 mt-4 text-center">
-                    {testHistory.length} {testHistory.length === 1 ? 'результат' : testHistory.length < 5 ? 'результата' : 'результатов'} сохранено
-                  </p>
+                  <div className="flex items-center justify-between mt-4">
+                    <p className="text-sm text-gray-600">
+                      {testHistory.length} {testHistory.length === 1 ? 'результат' : testHistory.length < 5 ? 'результата' : 'результатов'} сохранено
+                    </p>
+                    <Button
+                      onClick={downloadHistoryPDF}
+                      size="sm"
+                      variant="outline"
+                      className="text-xs"
+                    >
+                      <Icon name="FileDown" size={16} className="mr-1" />
+                      Экспорт истории
+                    </Button>
+                  </div>
                 </div>
               )}
 
