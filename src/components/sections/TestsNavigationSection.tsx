@@ -12,36 +12,16 @@ const TestsNavigationSection = () => {
 
   const tests = [
     {
-      id: 'combined-test',
-      title: 'Комплексный тест',
-      subtitle: 'Депрессия + Тревожность (BDI + BAI)',
-      description: 'Полная диагностика из 41 вопроса по обеим шкалам Бека с общим итоговым отчетом',
-      icon: 'Activity',
-      color: 'from-purple-500 to-pink-600',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
-      featured: true,
-    },
-    {
-      id: 'test',
+      id: 'depression-test',
       title: 'Тест на депрессию',
-      subtitle: 'Шкала депрессии Бека (BDI)',
-      description: 'Стандартизированный опросник из 20 вопросов для оценки выраженности депрессивных симптомов',
+      subtitle: 'Шкала депрессии Бека (BDI-II)',
+      description: 'Клинически валидизированный опросник из 21 вопроса для оценки выраженности депрессивных симптомов',
       icon: 'Brain',
-      color: 'from-blue-500 to-purple-600',
+      color: 'from-blue-500 to-indigo-600',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200',
-    },
-    {
-      id: 'anxiety-test',
-      title: 'Тест на тревожность',
-      subtitle: 'Шкала тревожности Бека (BAI)',
-      description: 'Опросник из 21 вопроса для оценки физиологических и когнитивных симптомов тревоги',
-      icon: 'Heart',
-      color: 'from-orange-500 to-red-600',
-      bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200',
-    },
+      featured: true,
+    }
   ];
 
   return (
