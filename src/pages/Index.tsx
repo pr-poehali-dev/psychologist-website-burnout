@@ -1,6 +1,7 @@
 import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import TargetAudienceSection from '@/components/sections/TargetAudienceSection';
+import TestsNavigationSection from '@/components/sections/TestsNavigationSection';
 import BurnoutTestSection from '@/components/sections/BurnoutTestSection';
 import AnxietyTestSection from '@/components/sections/AnxietyTestSection';
 import ProblemSection from '@/components/sections/ProblemSection';
@@ -117,6 +118,7 @@ const Index = () => {
       <Header onBooking={handleBooking} />
       <HeroSection onBooking={handleBooking} />
       <TargetAudienceSection />
+      <TestsNavigationSection />
       <BurnoutTestSection onBooking={handleBooking} />
       <AnxietyTestSection onBooking={handleBooking} />
       <ProblemSection />

@@ -52,6 +52,7 @@ const Header = ({ onBooking }: HeaderProps) => {
   const navLinks = [
     { href: '#about', label: 'Обо мне' },
     { href: '#services', label: 'Услуги' },
+    { href: '#test', label: 'Тесты' },
     { href: '#cases', label: 'Кейсы' },
     { href: '/manifesto', label: 'Манифест' },
     { href: '#articles', label: 'Статьи' },

@@ -355,6 +355,20 @@ https://alexandergontar.ru
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
+  const scrollToAnxietyTest = () => {
+    const element = document.getElementById('anxiety-test');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const scrollToTestsNav = () => {
+    const element = document.getElementById('tests-nav');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   if (showResult) {
     const result = calculateResult();
     const total = answers.reduce((sum, val) => sum + val, 0);
@@ -362,6 +376,16 @@ https://alexandergontar.ru
     return (
       <section className="py-16 md:py-20 bg-gradient-to-b from-primary/5 to-white">
         <div className="container mx-auto px-4">
+          <div className="flex justify-center mb-6">
+            <Button
+              onClick={scrollToTestsNav}
+              variant="outline"
+              size="sm"
+            >
+              <Icon name="ArrowLeft" size={16} className="mr-2" />
+              Вернуться к выбору теста
+            </Button>
+          </div>
           <div className="max-w-3xl mx-auto">
             <Card className={`border-2 ${result.borderColor} ${result.bgColor}`}>
               <CardHeader className="text-center pb-4">
@@ -427,23 +451,35 @@ https://alexandergontar.ru
                     </Button>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col gap-3">
                     <Button
                       onClick={onBooking}
-                      className="flex-1"
+                      className="w-full"
                       size="lg"
                     >
                       <Icon name="Calendar" size={20} className="mr-2" />
                       Записаться на консультацию
                     </Button>
-                    <Button
-                      onClick={resetTest}
-                      variant="outline"
-                      size="lg"
-                    >
-                      <Icon name="RotateCcw" size={20} className="mr-2" />
-                      Пройти снова
-                    </Button>
+                    <div className="flex gap-3">
+                      <Button
+                        onClick={resetTest}
+                        variant="outline"
+                        className="flex-1"
+                        size="lg"
+                      >
+                        <Icon name="RotateCcw" size={20} className="mr-2" />
+                        Пройти снова
+                      </Button>
+                      <Button
+                        onClick={scrollToAnxietyTest}
+                        variant="outline"
+                        className="flex-1"
+                        size="lg"
+                      >
+                        Тест на тревожность
+                        <Icon name="ArrowRight" size={20} className="ml-2" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -457,6 +493,16 @@ https://alexandergontar.ru
   return (
     <section id="test" className="py-16 md:py-20 bg-gradient-to-b from-white to-primary/5">
       <div className="container mx-auto px-4">
+        <div className="flex justify-center mb-6">
+          <Button
+            onClick={scrollToTestsNav}
+            variant="outline"
+            size="sm"
+          >
+            <Icon name="ArrowLeft" size={16} className="mr-2" />
+            Вернуться к выбору теста
+          </Button>
+        </div>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
