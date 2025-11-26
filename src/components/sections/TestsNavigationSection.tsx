@@ -12,6 +12,17 @@ const TestsNavigationSection = () => {
 
   const tests = [
     {
+      id: 'combined-test',
+      title: 'Комплексный тест',
+      subtitle: 'Депрессия + Тревожность (BDI + BAI)',
+      description: 'Полная диагностика из 41 вопроса по обеим шкалам Бека с общим итоговым отчетом',
+      icon: 'Activity',
+      color: 'from-purple-500 to-pink-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'border-purple-200',
+      featured: true,
+    },
+    {
       id: 'test',
       title: 'Тест на депрессию',
       subtitle: 'Шкала депрессии Бека (BDI)',
@@ -46,39 +57,48 @@ const TestsNavigationSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {tests.map((test) => (
+        <div className="space-y-6 max-w-5xl mx-auto">
+          {tests.map((test, index) => (
             <Card
               key={test.id}
-              className={`border-2 ${test.borderColor} ${test.bgColor} hover:shadow-xl transition-all duration-300 cursor-pointer group`}
+              className={`border-2 ${test.borderColor} ${test.bgColor} hover:shadow-xl transition-all duration-300 cursor-pointer group ${index === 0 ? 'md:col-span-2' : ''}`}
               onClick={() => scrollToTest(test.id)}
             >
               <CardContent className="p-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${test.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon name={test.icon} size={32} className="text-white" />
+                <div className={`flex flex-col ${index === 0 ? 'md:flex-row md:items-center' : 'items-center'} text-center ${index === 0 ? 'md:text-left' : ''} gap-6`}>
+                  <div className={`${index === 0 ? 'w-20 h-20' : 'w-16 h-16'} rounded-full bg-gradient-to-br ${test.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
+                    <Icon name={test.icon} size={index === 0 ? 40 : 32} className="text-white" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-2">{test.title}</h3>
-                  <p className="text-sm font-medium text-muted-foreground mb-3">
-                    {test.subtitle}
-                  </p>
-                  
-                  <p className="text-base text-foreground/70 mb-6">
-                    {test.description}
-                  </p>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+                      <h3 className={`${index === 0 ? 'text-3xl' : 'text-2xl'} font-bold`}>{test.title}</h3>
+                      {test.featured && (
+                        <span className="px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full">
+                          Рекомендуем
+                        </span>
+                      )}
+                    </div>
+                    <p className={`${index === 0 ? 'text-base' : 'text-sm'} font-medium text-muted-foreground mb-3`}>
+                      {test.subtitle}
+                    </p>
+                    
+                    <p className="text-base text-foreground/70 mb-6">
+                      {test.description}
+                    </p>
 
-                  <Button
-                    size="lg"
-                    className="w-full group-hover:scale-105 transition-transform"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      scrollToTest(test.id);
-                    }}
-                  >
-                    Пройти тест
-                    <Icon name="ArrowRight" size={20} className="ml-2" />
-                  </Button>
+                    <Button
+                      size="lg"
+                      className={`${index === 0 ? 'w-full md:w-auto px-8' : 'w-full'} group-hover:scale-105 transition-transform`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        scrollToTest(test.id);
+                      }}
+                    >
+                      Пройти тест
+                      <Icon name="ArrowRight" size={20} className="ml-2" />
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
