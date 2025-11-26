@@ -1,0 +1,23 @@
+import Header from '@/components/sections/Header';
+import Footer from '@/components/sections/Footer';
+import TestsNavigationSection from '@/components/sections/TestsNavigationSection';
+import DepressionTestSection from '@/components/sections/DepressionTestSection';
+import AnxietyTestSection from '@/components/sections/AnxietyTestSection';
+
+const Tests = () => {
+  const handleBooking = () => {
+    window.open('https://calink.ru/Algon', '_blank');
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-accent/20">
+      <Header onBooking={handleBooking} />
+      <TestsNavigationSection />
+      <DepressionTestSection onBooking={handleBooking} />
+      <AnxietyTestSection onBooking={handleBooking} />
+      <Footer />
+    </div>
+  );
+};
+
+export default Tests;
