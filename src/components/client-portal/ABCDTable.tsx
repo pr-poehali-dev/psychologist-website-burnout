@@ -106,77 +106,112 @@ const ABCDTable = () => {
         </div>
       </CardHeader>
       <CardContent className="space-y-6">
-        {abcdRows.map((row, index) => (
-          <div key={index} className="p-4 border rounded-lg space-y-4 relative bg-white">
-            {abcdRows.length > 1 && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute top-2 right-2"
-                onClick={() => removeAbcdRow(index)}
-              >
-                <Icon name="X" size={16} />
-              </Button>
-            )}
-            <h4 className="font-semibold text-lg">Запись #{index + 1}</h4>
-            <div className="grid gap-4">
-              <div className="space-y-2">
-                <Label htmlFor={`a-${index}`}>А - Активирующее событие (что произошло?)</Label>
-                <Textarea
-                  id={`a-${index}`}
-                  value={row.a}
-                  onChange={(e) => updateAbcdRow(index, 'a', e.target.value)}
-                  placeholder="Опишите ситуацию объективно, без оценок"
-                  className="min-h-[80px]"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`b-${index}`}>Б - Убеждения (что я подумал?)</Label>
-                <Textarea
-                  id={`b-${index}`}
-                  value={row.b}
-                  onChange={(e) => updateAbcdRow(index, 'b', e.target.value)}
-                  placeholder="Запишите автоматические мысли, которые возникли"
-                  className="min-h-[80px]"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`c-${index}`}>В - Последствия (что я почувствовал?)</Label>
-                <Textarea
-                  id={`c-${index}`}
-                  value={row.c}
-                  onChange={(e) => updateAbcdRow(index, 'c', e.target.value)}
-                  placeholder="Отметьте эмоции и их интенсивность (0-10), физические ощущения, действия"
-                  className="min-h-[80px]"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`d-${index}`}>Г - Оспаривание (какие есть альтернативы?)</Label>
-                <Textarea
-                  id={`d-${index}`}
-                  value={row.d}
-                  onChange={(e) => updateAbcdRow(index, 'd', e.target.value)}
-                  placeholder="Найдите альтернативные объяснения и доказательства за/против ваших убеждений"
-                  className="min-h-[80px]"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`e-${index}`}>Д - Новая реакция (что изменилось?)</Label>
-                <Textarea
-                  id={`e-${index}`}
-                  value={row.e}
-                  onChange={(e) => updateAbcdRow(index, 'e', e.target.value)}
-                  placeholder="Опишите новые, более рациональные мысли и как они влияют на ваши эмоции"
-                  className="min-h-[80px]"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr>
+                <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
+                  <div className="space-y-1">
+                    <div>А</div>
+                    <div className="text-xs font-normal">Активирующее событие</div>
+                    <div className="text-xs font-normal opacity-80">(что произошло?)</div>
+                  </div>
+                </th>
+                <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
+                  <div className="space-y-1">
+                    <div>Б</div>
+                    <div className="text-xs font-normal">Убеждения</div>
+                    <div className="text-xs font-normal opacity-80">(что я подумал?)</div>
+                  </div>
+                </th>
+                <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
+                  <div className="space-y-1">
+                    <div>В</div>
+                    <div className="text-xs font-normal">Последствия</div>
+                    <div className="text-xs font-normal opacity-80">(что я почувствовал?)</div>
+                  </div>
+                </th>
+                <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
+                  <div className="space-y-1">
+                    <div>Г</div>
+                    <div className="text-xs font-normal">Оспаривание</div>
+                    <div className="text-xs font-normal opacity-80">(альтернативы?)</div>
+                  </div>
+                </th>
+                <th className="border-2 border-primary bg-primary text-white p-3 text-sm font-semibold min-w-[180px]">
+                  <div className="space-y-1">
+                    <div>Д</div>
+                    <div className="text-xs font-normal">Новая реакция</div>
+                    <div className="text-xs font-normal opacity-80">(что изменилось?)</div>
+                  </div>
+                </th>
+                <th className="border-2 border-primary bg-primary text-white p-3 w-[60px]"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {abcdRows.map((row, index) => (
+                <tr key={index}>
+                  <td className="border-2 border-gray-300 p-2">
+                    <Textarea
+                      value={row.a}
+                      onChange={(e) => updateAbcdRow(index, 'a', e.target.value)}
+                      placeholder="Опишите ситуацию объективно"
+                      className="min-h-[100px] border-0 focus-visible:ring-0 resize-none"
+                    />
+                  </td>
+                  <td className="border-2 border-gray-300 p-2">
+                    <Textarea
+                      value={row.b}
+                      onChange={(e) => updateAbcdRow(index, 'b', e.target.value)}
+                      placeholder="Автоматические мысли"
+                      className="min-h-[100px] border-0 focus-visible:ring-0 resize-none"
+                    />
+                  </td>
+                  <td className="border-2 border-gray-300 p-2">
+                    <Textarea
+                      value={row.c}
+                      onChange={(e) => updateAbcdRow(index, 'c', e.target.value)}
+                      placeholder="Эмоции (0-10), ощущения"
+                      className="min-h-[100px] border-0 focus-visible:ring-0 resize-none"
+                    />
+                  </td>
+                  <td className="border-2 border-gray-300 p-2">
+                    <Textarea
+                      value={row.d}
+                      onChange={(e) => updateAbcdRow(index, 'd', e.target.value)}
+                      placeholder="Доказательства за/против"
+                      className="min-h-[100px] border-0 focus-visible:ring-0 resize-none"
+                    />
+                  </td>
+                  <td className="border-2 border-gray-300 p-2">
+                    <Textarea
+                      value={row.e}
+                      onChange={(e) => updateAbcdRow(index, 'e', e.target.value)}
+                      placeholder="Рациональные мысли"
+                      className="min-h-[100px] border-0 focus-visible:ring-0 resize-none"
+                    />
+                  </td>
+                  <td className="border-2 border-gray-300 p-2 text-center">
+                    {abcdRows.length > 1 && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => removeAbcdRow(index)}
+                        className="hover:bg-red-100"
+                      >
+                        <Icon name="Trash2" size={16} className="text-red-600" />
+                      </Button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         
         <Button onClick={addAbcdRow} variant="outline" className="w-full">
           <Icon name="Plus" size={18} className="mr-2" />
-          Добавить запись
+          Добавить строку
         </Button>
 
         <div className="mt-6 p-4 bg-purple-50 rounded-lg">
