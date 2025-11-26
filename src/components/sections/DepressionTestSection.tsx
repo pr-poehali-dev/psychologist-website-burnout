@@ -5,6 +5,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
 import { Progress } from '@/components/ui/progress';
+import { jsPDF } from 'jspdf';
 
 interface DepressionTestSectionProps {
   onBooking: () => void;
@@ -235,6 +236,76 @@ const DepressionTestSection = ({ onBooking }: DepressionTestSectionProps) => {
     setShowResult(false);
   };
 
+  const downloadPDF = () => {
+    const doc = new jsPDF();
+    const result = getResult();
+    const score = calculateScore();
+    const maxScore = 63;
+    const date = new Date().toLocaleDateString('ru-RU');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+    doc.text('Rezultaty testa BDI-II', 105, 20, { align: 'center' });
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`Data prohojdeniya: ${date}`, 105, 30, { align: 'center' });
+    
+    doc.setDrawColor(200, 200, 200);
+    doc.line(20, 35, 190, 35);
+    
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Vash rezultat:', 20, 50);
+    
+    doc.setFontSize(32);
+    const scoreColor = score <= 13 ? [22, 163, 74] : score <= 19 ? [202, 138, 4] : score <= 28 ? [234, 88, 12] : [220, 38, 38];
+    doc.setTextColor(...scoreColor);
+    doc.text(`${score} / ${maxScore}`, 105, 70, { align: 'center' });
+    
+    doc.setFontSize(16);
+    doc.text(result.level, 105, 85, { align: 'center' });
+    
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Interpretaciya:', 20, 105);
+    
+    doc.setFont('helvetica', 'normal');
+    const descLines = doc.splitTextToSize(result.description, 170);
+    doc.text(descLines, 20, 115);
+    
+    doc.setFont('helvetica', 'bold');
+    doc.text('Rekomendacii:', 20, 135);
+    
+    doc.setFont('helvetica', 'normal');
+    const recLines = doc.splitTextToSize(result.recommendation, 170);
+    doc.text(recLines, 20, 145);
+    
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(100, 100, 100);
+    doc.text('Vajno:', 20, 175);
+    doc.setFont('helvetica', 'normal');
+    doc.text('- Etot test yavlyaetsya skriningovym instrumentom, a ne diagnozom', 20, 182);
+    doc.text('- Tolko specialist mojet postavit tochnyi diagnoz', 20, 189);
+    doc.text('- Depressiya - eto izlechimoe sostoyanie pri pravilnom podhode', 20, 196);
+    
+    doc.setDrawColor(200, 200, 200);
+    doc.line(20, 210, 190, 210);
+    
+    doc.setFontSize(10);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Shkala depressii Beka (BDI-II)', 105, 220, { align: 'center' });
+    doc.text('Beck Depression Inventory - Second Edition', 105, 227, { align: 'center' });
+    
+    doc.setFontSize(9);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Dlya zapisyi na konsultaciyu posetite: calink.ru/Algon', 105, 280, { align: 'center' });
+
+    doc.save(`BDI-II_rezultaty_${date.replace(/\./g, '-')}.pdf`);
+  };
+
   const calculateScore = () => {
     return answers.reduce((sum, val) => sum + val, 0);
   };
@@ -381,20 +452,31 @@ const DepressionTestSection = ({ onBooking }: DepressionTestSectionProps) => {
                 </ul>
               </div>
 
-              <div className="flex gap-4 flex-col sm:flex-row">
-                <Button
-                  onClick={onBooking}
-                  size="lg"
-                  className="flex-1 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700"
-                >
-                  <Icon name="Calendar" size={20} className="mr-2" />
-                  Записаться на консультацию
-                </Button>
+              <div className="space-y-3">
+                <div className="flex gap-4 flex-col sm:flex-row">
+                  <Button
+                    onClick={onBooking}
+                    size="lg"
+                    className="flex-1 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700"
+                  >
+                    <Icon name="Calendar" size={20} className="mr-2" />
+                    Записаться на консультацию
+                  </Button>
+                  <Button
+                    onClick={downloadPDF}
+                    size="lg"
+                    variant="default"
+                    className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                  >
+                    <Icon name="Download" size={20} className="mr-2" />
+                    Скачать результаты PDF
+                  </Button>
+                </div>
                 <Button
                   onClick={handleReset}
                   size="lg"
                   variant="outline"
-                  className="flex-1"
+                  className="w-full"
                 >
                   <Icon name="RotateCcw" size={20} className="mr-2" />
                   Пройти заново
