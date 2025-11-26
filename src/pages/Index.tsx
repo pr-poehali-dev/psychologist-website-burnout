@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import TargetAudienceSection from '@/components/sections/TargetAudienceSection';
 import TestsNavigationSection from '@/components/sections/TestsNavigationSection';
 import DepressionTestSection from '@/components/sections/DepressionTestSection';
+import AnxietyTestSection from '@/components/sections/AnxietyTestSection';
 import ProblemSection from '@/components/sections/ProblemSection';
 import CasesSection from '@/components/sections/CasesSection';
 import MistakesSection from '@/components/sections/MistakesSection';
@@ -119,6 +120,7 @@ const Index = () => {
       <TargetAudienceSection />
       <TestsNavigationSection />
       <DepressionTestSection onBooking={handleBooking} />
+      <AnxietyTestSection onBooking={handleBooking} />
       <ProblemSection />
       <CasesSection cases={cases} />
       <MistakesSection />
