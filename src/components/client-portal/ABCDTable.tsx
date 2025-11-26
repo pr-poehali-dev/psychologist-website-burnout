@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 interface ABCDRow {
   a: string;
@@ -57,7 +57,7 @@ const ABCDTable = () => {
       row.e || '-'
     ]);
 
-    (doc as any).autoTable({
+    autoTable(doc, {
       startY: 28,
       head: [['Активирующее\nсобытие', 'Убеждения', 'Последствия', 'Оспаривание', 'Новая реакция']],
       body: tableData,

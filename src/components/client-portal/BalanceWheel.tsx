@@ -6,8 +6,8 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 import { Slider } from '@/components/ui/slider';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 interface LifeArea {
   name: string;
@@ -135,7 +135,7 @@ const BalanceWheel = () => {
       area.actions || '-'
     ]);
 
-    (doc as any).autoTable({
+    autoTable(doc, {
       startY: 190,
       head: [['Сфера', 'Оценка', 'Что забирает энергию', 'Что даёт энергию', 'Действия']],
       body: tableData,
