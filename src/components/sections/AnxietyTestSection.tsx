@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -6,6 +6,13 @@ import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
 import { Progress } from '@/components/ui/progress';
 import { jsPDF } from 'jspdf';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+
+interface TestResult {
+  date: string;
+  score: number;
+  timestamp: number;
+}
 
 interface AnxietyTestSectionProps {
   onBooking: () => void;
@@ -15,6 +22,25 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
+  const [testHistory, setTestHistory] = useState<TestResult[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('bai-test-history');
+    if (saved) {
+      setTestHistory(JSON.parse(saved));
+    }
+  }, []);
+
+  const saveResult = (score: number) => {
+    const newResult: TestResult = {
+      date: new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' }),
+      score,
+      timestamp: Date.now()
+    };
+    const updated = [...testHistory, newResult].slice(-10);
+    setTestHistory(updated);
+    localStorage.setItem('bai-test-history', JSON.stringify(updated));
+  };
 
   const baiQuestions = [
     'Ощущение онемения или покалывания',
@@ -59,6 +85,8 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
     if (currentQuestion < baiQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      const score = calculateScore();
+      saveResult(score);
       setShowResult(true);
     }
   };
@@ -227,6 +255,52 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
                   {result.level}
                 </h3>
               </div>
+
+              {testHistory.length > 1 && (
+                <div className="my-8 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                  <h4 className="font-semibold mb-4 flex items-center gap-2">
+                    <Icon name="TrendingUp" size={20} />
+                    Динамика ваших результатов
+                  </h4>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <LineChart data={testHistory}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                      <XAxis 
+                        dataKey="date" 
+                        stroke="#6b7280"
+                        style={{ fontSize: '12px' }}
+                      />
+                      <YAxis 
+                        domain={[0, 63]}
+                        stroke="#6b7280"
+                        style={{ fontSize: '12px' }}
+                      />
+                      <Tooltip 
+                        contentStyle={{ 
+                          backgroundColor: 'white', 
+                          border: '1px solid #e5e7eb',
+                          borderRadius: '8px'
+                        }}
+                        labelStyle={{ color: '#374151', fontWeight: 'bold' }}
+                      />
+                      <ReferenceLine y={7} stroke="#16a34a" strokeDasharray="3 3" label="Минимальная" />
+                      <ReferenceLine y={15} stroke="#ca8a04" strokeDasharray="3 3" label="Лёгкая" />
+                      <ReferenceLine y={25} stroke="#ea580c" strokeDasharray="3 3" label="Умеренная" />
+                      <Line 
+                        type="monotone" 
+                        dataKey="score" 
+                        stroke="#f97316" 
+                        strokeWidth={3}
+                        dot={{ fill: '#f97316', r: 5 }}
+                        activeDot={{ r: 7 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                  <p className="text-sm text-gray-600 mt-4 text-center">
+                    {testHistory.length} {testHistory.length === 1 ? 'результат' : testHistory.length < 5 ? 'результата' : 'результатов'} сохранено
+                  </p>
+                </div>
+              )}
 
               <div className="my-8">
                 <div className="relative h-8 bg-gray-200 rounded-full overflow-hidden">
