@@ -314,7 +314,7 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
     const maxScore = 63;
 
     return (
-      <section id="anxiety-test" className="py-20 px-4 bg-gradient-to-b from-white to-orange-50">
+      <section id="anxiety-test" className="py-20 px-4 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto max-w-4xl">
           <Card className={`${result.borderColor} border-2 shadow-2xl`}>
             <CardHeader className={result.bgColor}>
@@ -434,12 +434,12 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
                 </div>
               </div>
 
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
-                <h4 className="font-semibold mb-3 flex items-center gap-2 text-orange-900">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h4 className="font-semibold mb-3 flex items-center gap-2 text-blue-900">
                   <Icon name="Heart" size={20} />
                   Важно помнить:
                 </h4>
-                <ul className="space-y-2 text-sm text-orange-900">
+                <ul className="space-y-2 text-sm text-blue-900">
                   <li className="flex items-start gap-2">
                     <Icon name="Check" size={16} className="mt-1 flex-shrink-0" />
                     <span>Этот тест является скрининговым инструментом, а не диагнозом</span>
@@ -460,7 +460,7 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
                   <Button
                     onClick={onBooking}
                     size="lg"
-                    className="flex-1 bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-700"
+                    className="flex-1 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700"
                   >
                     <Icon name="Calendar" size={20} className="mr-2" />
                     Записаться на консультацию
@@ -495,7 +495,7 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
   const currentQ = baiQuestions[currentQuestion];
 
   return (
-    <section id="anxiety-test" className="py-20 px-4 bg-gradient-to-b from-white to-orange-50">
+    <section id="anxiety-test" className="py-20 px-4 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -506,8 +506,8 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
           </p>
         </div>
 
-        <Card className="shadow-2xl border-2 border-orange-200">
-          <CardHeader className="bg-gradient-to-r from-orange-50 to-white">
+        <Card className="shadow-2xl border-2 border-blue-200">
+          <CardHeader className="bg-gradient-to-r from-blue-50 to-white">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <CardTitle className="text-2xl">
@@ -522,7 +522,7 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
           </CardHeader>
           <CardContent className="p-8">
             <div className="space-y-6">
-              <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {currentQ}
                 </h3>
@@ -541,8 +541,8 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
                       key={index}
                       className={`flex items-start space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer hover:shadow-md ${
                         answers[currentQuestion] === option.value
-                          ? 'border-orange-500 bg-orange-50'
-                          : 'border-gray-200 hover:border-orange-300'
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-200 hover:border-blue-300'
                       }`}
                       onClick={() => handleAnswer(option.value)}
                     >
@@ -573,7 +573,7 @@ const AnxietyTestSection = ({ onBooking }: AnxietyTestSectionProps) => {
                   onClick={handleNext}
                   size="lg"
                   disabled={answers[currentQuestion] === undefined}
-                  className="flex-1 bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-700"
+                  className="flex-1 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700"
                 >
                   {currentQuestion === baiQuestions.length - 1 ? 'Показать результат' : 'Далее'}
                   <Icon name="ChevronRight" size={20} className="ml-2" />
