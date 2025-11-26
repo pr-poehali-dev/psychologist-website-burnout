@@ -28,9 +28,9 @@ const TestsNavigationSection = () => {
       subtitle: 'Шкала тревожности Бека (BAI)',
       description: 'Опросник из 21 вопроса для оценки физиологических и когнитивных симптомов тревоги',
       icon: 'Heart',
-      color: 'from-orange-500 to-red-600',
-      bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200',
+      color: 'from-blue-500 to-indigo-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
       featured: false,
     }
   ];
