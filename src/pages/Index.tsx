@@ -2,7 +2,6 @@ import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import TargetAudienceSection from '@/components/sections/TargetAudienceSection';
 import TestsNavigationSection from '@/components/sections/TestsNavigationSection';
-import CombinedTestSection from '@/components/sections/CombinedTestSection';
 import BurnoutTestSection from '@/components/sections/BurnoutTestSection';
 import AnxietyTestSection from '@/components/sections/AnxietyTestSection';
 import ProblemSection from '@/components/sections/ProblemSection';
@@ -120,7 +119,6 @@ const Index = () => {
       <HeroSection onBooking={handleBooking} />
       <TargetAudienceSection />
       <TestsNavigationSection />
-      <CombinedTestSection onBooking={handleBooking} />
       <BurnoutTestSection onBooking={handleBooking} />
       <AnxietyTestSection onBooking={handleBooking} />
       <ProblemSection />

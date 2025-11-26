@@ -1,12 +1,23 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { useNavigate } from 'react-router-dom';
 
 const TestsNavigationSection = () => {
+  const navigate = useNavigate();
+  
   const scrollToTest = (testId: string) => {
     const element = document.getElementById(testId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleTestClick = (testId: string) => {
+    if (testId === 'combined-test') {
+      navigate('/combined-test');
+    } else {
+      scrollToTest(testId);
     }
   };
 
@@ -62,7 +73,7 @@ const TestsNavigationSection = () => {
             <Card
               key={test.id}
               className={`border-2 ${test.borderColor} ${test.bgColor} hover:shadow-xl transition-all duration-300 cursor-pointer group ${index === 0 ? 'md:col-span-2' : ''}`}
-              onClick={() => scrollToTest(test.id)}
+              onClick={() => handleTestClick(test.id)}
             >
               <CardContent className="p-6">
                 <div className={`flex flex-col ${index === 0 ? 'md:flex-row md:items-center' : 'items-center'} text-center ${index === 0 ? 'md:text-left' : ''} gap-6`}>
@@ -92,7 +103,7 @@ const TestsNavigationSection = () => {
                       className={`${index === 0 ? 'w-full md:w-auto px-8' : 'w-full'} group-hover:scale-105 transition-transform`}
                       onClick={(e) => {
                         e.stopPropagation();
-                        scrollToTest(test.id);
+                        handleTestClick(test.id);
                       }}
                     >
                       Пройти тест
