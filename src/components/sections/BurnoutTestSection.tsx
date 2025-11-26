@@ -22,53 +22,183 @@ const BurnoutTestSection = ({ onBooking }: BurnoutTestSectionProps) => {
 
   const questions = [
     {
-      question: 'Как часто вы чувствуете эмоциональное истощение от работы?',
+      question: 'Я чувствую себя несчастным и мне хочется плакать',
       options: [
-        { text: 'Никогда', value: 0 },
-        { text: 'Редко', value: 1 },
-        { text: 'Иногда', value: 2 },
-        { text: 'Часто', value: 3 },
-        { text: 'Постоянно', value: 4 }
+        { text: 'Нет', value: 0 },
+        { text: 'Иногда', value: 1 },
+        { text: 'Часто', value: 2 },
+        { text: 'Почти всегда', value: 3 }
       ]
     },
     {
-      question: 'Насколько сложно вам концентрироваться на задачах?',
+      question: 'Утром я чувствую себя лучше всего',
       options: [
-        { text: 'Легко концентрируюсь', value: 0 },
-        { text: 'Иногда отвлекаюсь', value: 1 },
-        { text: 'Приходится прикладывать усилия', value: 2 },
-        { text: 'Очень сложно', value: 3 },
-        { text: 'Практически невозможно', value: 4 }
+        { text: 'Да, почти всегда', value: 3 },
+        { text: 'Довольно часто', value: 2 },
+        { text: 'Не очень часто', value: 1 },
+        { text: 'Нет, совсем не так', value: 0 }
       ]
     },
     {
-      question: 'Как вы себя чувствуете утром перед рабочим днём?',
+      question: 'У меня бывают приступы плача или близости к слезам',
       options: [
-        { text: 'Бодрым и мотивированным', value: 0 },
-        { text: 'Нормально', value: 1 },
-        { text: 'Уставшим', value: 2 },
-        { text: 'Разбитым', value: 3 },
-        { text: 'Не хочу вставать', value: 4 }
+        { text: 'Очень часто', value: 3 },
+        { text: 'Довольно часто', value: 2 },
+        { text: 'Иногда', value: 1 },
+        { text: 'Никогда', value: 0 }
       ]
     },
     {
-      question: 'Как часто вы испытываете раздражение или цинизм к работе?',
+      question: 'У меня плохой ночной сон',
       options: [
-        { text: 'Никогда', value: 0 },
-        { text: 'Редко', value: 1 },
-        { text: 'Иногда', value: 2 },
-        { text: 'Часто', value: 3 },
-        { text: 'Постоянно', value: 4 }
+        { text: 'Да, почти всегда', value: 3 },
+        { text: 'Довольно часто', value: 2 },
+        { text: 'Иногда', value: 1 },
+        { text: 'Нет, я сплю хорошо', value: 0 }
       ]
     },
     {
-      question: 'Насколько качественно вы спите последнее время?',
+      question: 'Аппетит у меня не хуже обычного',
       options: [
-        { text: 'Отлично', value: 0 },
-        { text: 'Хорошо', value: 1 },
-        { text: 'Бывают проблемы', value: 2 },
-        { text: 'Плохо', value: 3 },
-        { text: 'Бессонница', value: 4 }
+        { text: 'Да, не хуже', value: 0 },
+        { text: 'Немного хуже', value: 1 },
+        { text: 'Значительно хуже', value: 2 },
+        { text: 'Совсем нет аппетита', value: 3 }
+      ]
+    },
+    {
+      question: 'Я получаю удовольствие от общения с привлекательными женщинами/мужчинами',
+      options: [
+        { text: 'Да, получаю', value: 0 },
+        { text: 'Не очень получаю', value: 1 },
+        { text: 'Почти не получаю', value: 2 },
+        { text: 'Совсем не получаю', value: 3 }
+      ]
+    },
+    {
+      question: 'Я замечаю, что теряю вес',
+      options: [
+        { text: 'Да, теряю много', value: 3 },
+        { text: 'Немного потерял', value: 2 },
+        { text: 'Вероятно, немного потерял', value: 1 },
+        { text: 'Совсем не теряю', value: 0 }
+      ]
+    },
+    {
+      question: 'Меня беспокоят запоры',
+      options: [
+        { text: 'Да, почти постоянно', value: 3 },
+        { text: 'Довольно часто', value: 2 },
+        { text: 'Иногда', value: 1 },
+        { text: 'Нет, не беспокоят', value: 0 }
+      ]
+    },
+    {
+      question: 'Сердце бьется быстрее, чем обычно',
+      options: [
+        { text: 'Да, очень часто', value: 3 },
+        { text: 'Довольно часто', value: 2 },
+        { text: 'Иногда', value: 1 },
+        { text: 'Нет, не замечал', value: 0 }
+      ]
+    },
+    {
+      question: 'Я устаю без всяких причин',
+      options: [
+        { text: 'Да, почти постоянно', value: 3 },
+        { text: 'Довольно часто', value: 2 },
+        { text: 'Иногда', value: 1 },
+        { text: 'Нет, не устаю', value: 0 }
+      ]
+    },
+    {
+      question: 'Я мыслю так же ясно, как всегда',
+      options: [
+        { text: 'Да, так же ясно', value: 0 },
+        { text: 'Не так ясно, как обычно', value: 1 },
+        { text: 'Значительно хуже', value: 2 },
+        { text: 'Совсем плохо мыслю', value: 3 }
+      ]
+    },
+    {
+      question: 'Мне легко делать то, что я умею',
+      options: [
+        { text: 'Да, легко', value: 0 },
+        { text: 'Не так легко, как раньше', value: 1 },
+        { text: 'Приходится заставлять себя', value: 2 },
+        { text: 'Совсем не могу делать', value: 3 }
+      ]
+    },
+    {
+      question: 'Я чувствую беспокойство и не могу усидеть на месте',
+      options: [
+        { text: 'Да, очень сильно', value: 3 },
+        { text: 'Довольно сильно', value: 2 },
+        { text: 'Немного', value: 1 },
+        { text: 'Совсем не чувствую', value: 0 }
+      ]
+    },
+    {
+      question: 'Я с надеждой смотрю в будущее',
+      options: [
+        { text: 'Да, с надеждой', value: 0 },
+        { text: 'Не очень с надеждой', value: 1 },
+        { text: 'Почти без надежды', value: 2 },
+        { text: 'Совсем без надежды', value: 3 }
+      ]
+    },
+    {
+      question: 'Я более раздражителен, чем обычно',
+      options: [
+        { text: 'Да, гораздо более', value: 3 },
+        { text: 'Более раздражителен', value: 2 },
+        { text: 'Немного более', value: 1 },
+        { text: 'Нет, не более раздражителен', value: 0 }
+      ]
+    },
+    {
+      question: 'Мне легко принимать решения',
+      options: [
+        { text: 'Да, легко', value: 0 },
+        { text: 'Труднее, чем обычно', value: 1 },
+        { text: 'Очень трудно', value: 2 },
+        { text: 'Совсем не могу', value: 3 }
+      ]
+    },
+    {
+      question: 'Я чувствую, что полезен и необходим',
+      options: [
+        { text: 'Да, чувствую', value: 0 },
+        { text: 'Не очень чувствую', value: 1 },
+        { text: 'Почти не чувствую', value: 2 },
+        { text: 'Совсем не чувствую', value: 3 }
+      ]
+    },
+    {
+      question: 'Я живу достаточно полной жизнью',
+      options: [
+        { text: 'Да, вполне полной', value: 0 },
+        { text: 'Не очень полной', value: 1 },
+        { text: 'Довольно пустой', value: 2 },
+        { text: 'Совсем пустой', value: 3 }
+      ]
+    },
+    {
+      question: 'Я чувствую, что другим людям станет лучше, если я умру',
+      options: [
+        { text: 'Да, так и есть', value: 3 },
+        { text: 'Вероятно, так', value: 2 },
+        { text: 'Не думаю', value: 1 },
+        { text: 'Нет, совсем не так', value: 0 }
+      ]
+    },
+    {
+      question: 'Меня до сих пор радует то, что радовало всегда',
+      options: [
+        { text: 'Да, радует', value: 0 },
+        { text: 'Не очень радует', value: 1 },
+        { text: 'Мало что радует', value: 2 },
+        { text: 'Ничто не радует', value: 3 }
       ]
     }
   ];
@@ -91,48 +221,46 @@ const BurnoutTestSection = ({ onBooking }: BurnoutTestSectionProps) => {
 
   const calculateResult = () => {
     const total = answers.reduce((sum, val) => sum + val, 0);
-    const max = questions.length * 4;
-    const percentage = (total / max) * 100;
 
-    if (percentage < 20) {
+    if (total < 10) {
       return {
-        level: 'Низкий риск',
+        level: 'Отсутствие депрессии',
         color: 'text-green-600',
         bgColor: 'bg-green-50',
         borderColor: 'border-green-200',
         icon: 'CheckCircle',
-        description: 'У вас хорошее эмоциональное состояние. Продолжайте следить за балансом работы и отдыха.',
-        recommendation: 'Профилактические консультации помогут поддерживать этот уровень.'
+        description: 'У вас нормальное эмоциональное состояние. Отсутствуют признаки депрессии.',
+        recommendation: 'Поддерживайте здоровый образ жизни и баланс между работой и отдыхом.'
       };
-    } else if (percentage < 40) {
+    } else if (total < 19) {
       return {
-        level: 'Умеренный риск',
+        level: 'Легкая депрессия',
         color: 'text-yellow-600',
         bgColor: 'bg-yellow-50',
         borderColor: 'border-yellow-200',
         icon: 'AlertTriangle',
-        description: 'Появились первые признаки выгорания. Сейчас самое время принять меры.',
-        recommendation: 'Рекомендуется пройти консультацию для профилактики и освоения техник саморегуляции.'
+        description: 'Присутствуют незначительные признаки депрессии. Это может быть временным состоянием.',
+        recommendation: 'Рекомендуется консультация психолога для профилактики и освоения техник саморегуляции.'
       };
-    } else if (percentage < 70) {
+    } else if (total < 30) {
       return {
-        level: 'Высокий риск',
+        level: 'Умеренная депрессия',
         color: 'text-orange-600',
         bgColor: 'bg-orange-50',
         borderColor: 'border-orange-200',
         icon: 'AlertCircle',
-        description: 'У вас выраженные симптомы выгорания. Это влияет на продуктивность и здоровье.',
-        recommendation: 'Настоятельно рекомендуется начать работу с психологом. Программа из 8 сессий поможет восстановить баланс.'
+        description: 'У вас выраженные симптомы депрессии. Это влияет на качество жизни и требует внимания.',
+        recommendation: 'Настоятельно рекомендуется работа с психологом. КПТ-терапия эффективна при депрессии.'
       };
     } else {
       return {
-        level: 'Критический уровень',
+        level: 'Тяжелая депрессия',
         color: 'text-red-600',
         bgColor: 'bg-red-50',
         borderColor: 'border-red-200',
         icon: 'XCircle',
-        description: 'Критический уровень выгорания. Требуется немедленная помощь специалиста.',
-        recommendation: 'Необходима срочная консультация. Не откладывайте — ваше здоровье под угрозой.'
+        description: 'Выраженные симптомы тяжелой депрессии. Требуется профессиональная помощь.',
+        recommendation: 'Необходима консультация психолога или психиатра. Не откладывайте обращение за помощью.'
       };
     }
   };
@@ -149,10 +277,16 @@ const BurnoutTestSection = ({ onBooking }: BurnoutTestSectionProps) => {
     const total = answers.reduce((sum, val) => sum + val, 0);
     
     const content = `
-РЕЗУЛЬТАТЫ ТЕСТА НА ПРОФЕССИОНАЛЬНОЕ ВЫГОРАНИЕ
+РЕЗУЛЬТАТЫ ТЕСТА ПО ШКАЛЕ ДЕПРЕССИИ БЕКА
 
-Уровень риска: ${result.level}
-Баллы: ${total} из ${questions.length * 4}
+Уровень: ${result.level}
+Баллы: ${total} из 60
+
+Интерпретация баллов:
+0-9: Отсутствие депрессии
+10-18: Легкая депрессия
+19-29: Умеренная депрессия
+30-63: Тяжелая депрессия
 
 Описание:
 ${result.description}
@@ -161,19 +295,21 @@ ${result.description}
 ${result.recommendation}
 
 Ответы на вопросы:
-${questions.map((q, i) => `${i + 1}. ${q.question}\n   Ваш ответ: ${q.options[answers[i]].text}`).join('\n\n')}
+${questions.map((q, i) => `${i + 1}. ${q.question}\n   Ваш ответ: ${q.options[answers[i]].text} (${answers[i]} балла)`).join('\n\n')}
 
 ---
 Дата прохождения: ${new Date().toLocaleDateString('ru-RU')}
 Психолог Александр Гонтарь
 https://alexandergontar.ru
+
+Важно: Данный тест является ориентировочным и не заменяет профессиональную диагностику.
     `.trim();
 
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `test-burnout-${new Date().toISOString().split('T')[0]}.txt`;
+    link.download = `test-beck-${new Date().toISOString().split('T')[0]}.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -198,9 +334,6 @@ https://alexandergontar.ru
     setIsEmailSending(true);
     
     try {
-      const result = calculateResult();
-      const total = answers.reduce((sum, val) => sum + val, 0);
-      
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
@@ -224,6 +357,8 @@ https://alexandergontar.ru
 
   if (showResult) {
     const result = calculateResult();
+    const total = answers.reduce((sum, val) => sum + val, 0);
+    
     return (
       <section className="py-16 md:py-20 bg-gradient-to-b from-primary/5 to-white">
         <div className="container mx-auto px-4">
@@ -236,9 +371,12 @@ https://alexandergontar.ru
                   </div>
                 </div>
                 <CardTitle className="text-3xl font-bold mb-2">
-                  Результат теста на выгорание
+                  Результат теста Бека
                 </CardTitle>
                 <p className={`text-2xl font-bold ${result.color}`}>{result.level}</p>
+                <p className="text-lg text-muted-foreground mt-2">
+                  Ваш результат: {total} из 60 баллов
+                </p>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="p-6 bg-white rounded-lg border">
@@ -246,63 +384,68 @@ https://alexandergontar.ru
                   <p className="text-base font-medium text-foreground">{result.recommendation}</p>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="p-4 bg-white rounded-lg border">
-                    <p className="text-sm font-medium mb-3">Сохранить результаты:</p>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <div className="flex-1 flex gap-2">
-                        <Input
-                          type="email"
-                          placeholder="Ваш email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="flex-1"
-                        />
-                        <Button
-                          onClick={sendEmail}
-                          disabled={isEmailSending}
-                          variant="outline"
-                        >
-                          {isEmailSending ? (
-                            <Icon name="Loader2" size={18} className="animate-spin" />
-                          ) : (
-                            <><Icon name="Mail" size={18} className="mr-2" />Отправить</>
-                          )}
-                        </Button>
-                      </div>
-                      <Button
-                        onClick={downloadPDF}
-                        variant="outline"
-                      >
-                        <Icon name="Download" size={18} className="mr-2" />
-                        Скачать
-                      </Button>
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-start gap-3">
+                    <Icon name="Info" size={24} className="text-blue-600 flex-shrink-0 mt-1" />
+                    <div className="text-sm text-blue-900">
+                      <p className="font-medium mb-2">Интерпретация баллов:</p>
+                      <ul className="space-y-1">
+                        <li>0-9: Отсутствие депрессии</li>
+                        <li>10-18: Легкая депрессия</li>
+                        <li>19-29: Умеренная депрессия</li>
+                        <li>30-63: Тяжелая депрессия</li>
+                      </ul>
+                      <p className="mt-3 text-xs">
+                        Данный тест является ориентировочным и не заменяет профессиональную диагностику.
+                      </p>
                     </div>
                   </div>
+                </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button 
-                      size="lg" 
-                      className="flex-1 btn-pulse-glow"
+                <div className="space-y-4">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="flex-1 flex gap-2">
+                      <Input
+                        type="email"
+                        placeholder="Ваш email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="flex-1"
+                      />
+                      <Button
+                        onClick={sendEmail}
+                        disabled={isEmailSending}
+                        variant="outline"
+                      >
+                        <Icon name="Send" size={16} className="mr-2" />
+                        {isEmailSending ? 'Отправка...' : 'Отправить'}
+                      </Button>
+                    </div>
+                    <Button onClick={downloadPDF} variant="outline">
+                      <Icon name="Download" size={16} className="mr-2" />
+                      Скачать
+                    </Button>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button
                       onClick={onBooking}
+                      className="flex-1"
+                      size="lg"
                     >
                       <Icon name="Calendar" size={20} className="mr-2" />
                       Записаться на консультацию
                     </Button>
-                    <Button 
-                      size="lg" 
-                      variant="outline"
+                    <Button
                       onClick={resetTest}
+                      variant="outline"
+                      size="lg"
                     >
                       <Icon name="RotateCcw" size={20} className="mr-2" />
-                      Пройти ещё раз
+                      Пройти снова
                     </Button>
                   </div>
                 </div>
-
-                <p className="text-xs text-muted-foreground text-center italic mt-4">
-                  * Это экспресс-тест для первичной оценки. Для точной диагностики рекомендуется пройти полный тест MBI-HSS на консультации.
-                </p>
               </CardContent>
             </Card>
           </div>
@@ -312,28 +455,29 @@ https://alexandergontar.ru
   }
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-primary/5 to-white">
+    <section id="test" className="py-16 md:py-20 bg-gradient-to-b from-white to-primary/5">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-8">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Экспресс-тест на выгорание
+              Тест по шкале депрессии Бека
             </h2>
             <p className="text-lg text-muted-foreground">
-              Ответьте на 5 вопросов и узнайте ваш уровень риска за 1 минуту
+              Опросник Бека (BDI) — стандартизированный тест для оценки выраженности депрессии
             </p>
           </div>
 
-          <div className="mb-6">
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
-              <span>Вопрос {currentQuestion + 1} из {questions.length}</span>
-              <span>{Math.round(progress)}%</span>
-            </div>
-            <Progress value={progress} className="h-2" />
-          </div>
-
-          <Card className="border-2 border-primary/20">
+          <Card className="shadow-lg">
             <CardHeader>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm text-muted-foreground">
+                  Вопрос {currentQuestion + 1} из {questions.length}
+                </span>
+                <span className="text-sm font-medium text-primary">
+                  {Math.round(progress)}%
+                </span>
+              </div>
+              <Progress value={progress} className="mb-4" />
               <CardTitle className="text-xl md:text-2xl">
                 {questions[currentQuestion].question}
               </CardTitle>
@@ -341,28 +485,55 @@ https://alexandergontar.ru
             <CardContent>
               <RadioGroup
                 value={answers[currentQuestion]?.toString()}
-                onValueChange={(value) => handleAnswer(parseInt(value))}
+                onValueChange={(val) => handleAnswer(parseInt(val))}
+                className="space-y-3"
               >
-                <div className="space-y-3">
-                  {questions[currentQuestion].options.map((option, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-4 rounded-lg border-2 border-gray-200 hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer"
-                      onClick={() => handleAnswer(option.value)}
+                {questions[currentQuestion].options.map((option, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent hover:border-primary transition-all cursor-pointer"
+                    onClick={() => handleAnswer(option.value)}
+                  >
+                    <RadioGroupItem value={option.value.toString()} id={`option-${idx}`} />
+                    <Label
+                      htmlFor={`option-${idx}`}
+                      className="flex-1 cursor-pointer text-base"
                     >
-                      <RadioGroupItem value={option.value.toString()} id={`option-${index}`} />
-                      <Label
-                        htmlFor={`option-${index}`}
-                        className="flex-1 cursor-pointer text-base"
-                      >
-                        {option.text}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
+                      {option.text}
+                    </Label>
+                  </div>
+                ))}
               </RadioGroup>
+
+              <div className="mt-6 flex gap-3">
+                {currentQuestion > 0 && (
+                  <Button
+                    onClick={() => setCurrentQuestion(currentQuestion - 1)}
+                    variant="outline"
+                  >
+                    <Icon name="ChevronLeft" size={20} className="mr-2" />
+                    Назад
+                  </Button>
+                )}
+                <Button
+                  onClick={resetTest}
+                  variant="ghost"
+                  className="ml-auto"
+                >
+                  Начать заново
+                </Button>
+              </div>
             </CardContent>
           </Card>
+
+          <div className="mt-8 p-4 bg-muted/50 rounded-lg">
+            <div className="flex items-start gap-3">
+              <Icon name="Info" size={20} className="text-muted-foreground flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-muted-foreground">
+                Отвечайте на вопросы, ориентируясь на свое состояние в течение последних двух недель, включая сегодняшний день.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
