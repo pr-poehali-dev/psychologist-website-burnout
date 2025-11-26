@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TestResult } from '@/components/depression-test/testData';
+import { TestResult as TestResultType } from '@/components/depression-test/testData';
 import { bdiQuestions } from '@/components/depression-test/testData';
 import TestQuestion from '@/components/depression-test/TestQuestion';
 import TestResult from '@/components/depression-test/TestResult';
@@ -12,7 +12,7 @@ const DepressionTestSection = ({ onBooking }: DepressionTestSectionProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
-  const [testHistory, setTestHistory] = useState<TestResult[]>([]);
+  const [testHistory, setTestHistory] = useState<TestResultType[]>([]);
 
   useEffect(() => {
     const saved = localStorage.getItem('bdi-test-history');
@@ -22,7 +22,7 @@ const DepressionTestSection = ({ onBooking }: DepressionTestSectionProps) => {
   }, []);
 
   const saveResult = (score: number) => {
-    const newResult: TestResult = {
+    const newResult: TestResultType = {
       date: new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' }),
       score,
       timestamp: Date.now()
