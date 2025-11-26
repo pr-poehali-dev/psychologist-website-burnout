@@ -66,7 +66,7 @@ const Header = ({ onBooking }: HeaderProps) => {
           <h1 className="text-3xl font-extrabold text-primary" style={{ textShadow: '2px 2px 4px rgba(139, 92, 246, 0.3), -1px -1px 2px rgba(139, 92, 246, 0.2)' }}>Александр Гонтарь</h1>
         </div>
 
-        <nav className="hidden md:flex gap-6 items-center">
+        <nav className="hidden lg:flex gap-6 items-center">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -78,14 +78,23 @@ const Header = ({ onBooking }: HeaderProps) => {
           ))}
         </nav>
 
-        <Button className="hidden md:flex btn-pulse-glow" onClick={onBooking}>
-          <Icon name="Calendar" size={18} className="mr-2" />
-          Записаться
-        </Button>
+        <div className="hidden md:flex gap-3 items-center">
+          <Button 
+            className="bg-red-600 hover:bg-red-700 text-white animate-pulse"
+            onClick={() => window.location.href = '/client-portal'}
+          >
+            <Icon name="Lock" size={18} className="mr-2" />
+            Вход для клиентов
+          </Button>
+          <Button className="btn-pulse-glow" onClick={onBooking}>
+            <Icon name="Calendar" size={18} className="mr-2" />
+            Записаться
+          </Button>
+        </div>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
+            <Button variant="ghost" size="icon" className="lg:hidden">
               <Icon name="Menu" size={24} />
             </Button>
           </SheetTrigger>
@@ -104,7 +113,14 @@ const Header = ({ onBooking }: HeaderProps) => {
                   {link.label}
                 </a>
               ))}
-              <Button className="mt-4" onClick={() => { onBooking(); handleNavClick(); }}>
+              <Button 
+                className="mt-4 bg-red-600 hover:bg-red-700 text-white" 
+                onClick={() => { window.location.href = '/client-portal'; handleNavClick(); }}
+              >
+                <Icon name="Lock" size={18} className="mr-2" />
+                Вход для клиентов
+              </Button>
+              <Button onClick={() => { onBooking(); handleNavClick(); }}>
                 <Icon name="Calendar" size={18} className="mr-2" />
                 Записаться
               </Button>
