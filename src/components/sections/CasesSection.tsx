@@ -14,10 +14,13 @@ interface CaseItem {
 interface CasesSectionProps {
   cases: CaseItem[];
   hideNote?: boolean;
+  customSubtitle?: string;
 }
 
-const CasesSection = ({ cases, hideNote }: CasesSectionProps) => {
+const CasesSection = ({ cases, hideNote, customSubtitle }: CasesSectionProps) => {
   const { ref, isVisible } = useScrollReveal();
+
+  const defaultSubtitle = 'Кейсы клиентов, которые прошли путь от выгорания к балансу';
 
   return (
     <section id="cases" className="bg-white py-20">
@@ -26,7 +29,7 @@ const CasesSection = ({ cases, hideNote }: CasesSectionProps) => {
           <div className="text-center mb-16">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">Реальные истории изменений</h3>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Кейсы клиентов, которые прошли путь от выгорания к балансу
+              {customSubtitle || defaultSubtitle}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">

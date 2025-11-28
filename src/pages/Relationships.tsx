@@ -156,7 +156,11 @@ const Relationships = () => {
       <TargetAudienceSection customPoints={targetPoints} hideButtons />
       <TestPreviewSection />
       <ProblemSection customProblems={problems} />
-      <CasesSection cases={cases} hideNote />
+      <CasesSection 
+        cases={cases} 
+        hideNote 
+        customSubtitle="Истории пар, которые восстановили близость и вернули отношениям гармонию"
+      />
       <MistakesSection />
       <AboutSection />
       <MethodSection />
