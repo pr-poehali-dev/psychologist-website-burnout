@@ -19,6 +19,13 @@ const HeroSection = ({ onBooking, customContent }: HeroSectionProps) => {
   const title = customContent?.title || 'Путь от выгорания к балансу и энергии';
   const description = customContent?.description || 'Практическая психология • Когнитивно-поведенческая терапия (КПТ) • Доказательный подход';
 
+  const handleBookingClick = () => {
+    if (typeof window !== 'undefined' && (window as any).ym) {
+      (window as any).ym(105077878, 'reachGoal', 'click_hero_booking');
+    }
+    onBooking();
+  };
+
   return (
     <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
       <div className="container mx-auto px-4">
@@ -27,20 +34,23 @@ const HeroSection = ({ onBooking, customContent }: HeroSectionProps) => {
             <div className="overflow-hidden rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-96 h-64 sm:h-80 md:h-96 lg:h-[442px]">
               <img 
                 src="https://cdn.poehali.dev/files/2e684343-1c6d-4fc9-b7ac-ec0d255a56e5.jpg" 
-                alt="Александр Гонтарь - психолог" 
+                alt="Психолог Александр Гонтарь - специалист по когнитивно-поведенческой терапии в Москве" 
                 className="w-full h-auto object-cover mx-auto"
                 style={{ marginTop: '-30%', transform: 'scale(1.15)' }}
+                loading="eager"
+                width="384"
+                height="442"
               />
             </div>
           </div>
           <Badge variant="outline" className="text-primary border-primary">{badge}</Badge>
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             {title.includes('балансу') ? (
               <>Путь от выгорания к <span className="text-primary">балансу</span> и энергии</>
             ) : (
               title
             )}
-          </h2>
+          </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {description}
           </p>
@@ -59,7 +69,7 @@ const HeroSection = ({ onBooking, customContent }: HeroSectionProps) => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="text-lg px-8 btn-pulse btn-float btn-pulse-glow" onClick={onBooking}>
+            <Button size="lg" className="text-lg px-8 btn-pulse btn-float btn-pulse-glow" onClick={handleBookingClick}>
               <Icon name="Calendar" size={20} className="mr-2" />
               Записаться на консультацию
             </Button>

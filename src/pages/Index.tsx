@@ -15,6 +15,8 @@ import ReviewsSection from '@/components/sections/ReviewsSection';
 import FAQSection from '@/components/sections/FAQSection';
 import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/sections/Footer';
+import StickyBookingButton from '@/components/ui/StickyBookingButton';
+import SEOTextSection from '@/components/sections/SEOTextSection';
 
 const Index = () => {
   const handleBooking = () => {
@@ -144,8 +146,10 @@ const Index = () => {
       <SocialSection />
       <ReviewsSection reviews={reviews} />
       <FAQSection />
+      <SEOTextSection />
       <ContactSection onBooking={handleBooking} />
       <Footer />
+      <StickyBookingButton onBooking={handleBooking} />
     </div>
   );
 };

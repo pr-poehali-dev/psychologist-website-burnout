@@ -29,6 +29,15 @@ const ServicesSection = ({ services, onBooking }: ServicesSectionProps) => {
     s.title.includes('Групповые')
   );
 
+  const handleServiceClick = (serviceTitle: string) => {
+    if (typeof window !== 'undefined' && (window as any).ym) {
+      (window as any).ym(105077878, 'reachGoal', 'click_service_booking', {
+        service: serviceTitle
+      });
+    }
+    onBooking();
+  };
+
   return (
     <section id="services" className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-primary/10">
       <div className="container mx-auto px-4">
@@ -63,7 +72,7 @@ const ServicesSection = ({ services, onBooking }: ServicesSectionProps) => {
                         <Icon name="Clock" size={16} className="mr-2" />
                         {service.duration}
                       </div>
-                      <Button className="w-full" onClick={onBooking}>
+                      <Button className="w-full" onClick={() => handleServiceClick(service.title)}>
                         Записаться
                       </Button>
                     </CardContent>
@@ -96,7 +105,7 @@ const ServicesSection = ({ services, onBooking }: ServicesSectionProps) => {
                         <Icon name="Clock" size={16} className="mr-2" />
                         {service.duration}
                       </div>
-                      <Button className="w-full" onClick={onBooking}>
+                      <Button className="w-full" onClick={() => handleServiceClick(service.title)}>
                         Записаться
                       </Button>
                     </CardContent>
@@ -129,7 +138,7 @@ const ServicesSection = ({ services, onBooking }: ServicesSectionProps) => {
                         <Icon name="Clock" size={16} className="mr-2" />
                         {service.duration}
                       </div>
-                      <Button className="w-full" onClick={onBooking}>
+                      <Button className="w-full" onClick={() => handleServiceClick(service.title)}>
                         Записаться
                       </Button>
                     </CardContent>

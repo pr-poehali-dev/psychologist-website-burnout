@@ -4,6 +4,7 @@ import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { getEmpathyLevel, calculateScore, TestResult as TestResultType } from './testData';
+import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
 
 interface TestResultProps {
   answers: number[];
@@ -245,6 +246,13 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
                   <span>Эмпатию можно развивать через практику осознанности и активного слушания</span>
                 </li>
               </ul>
+            </div>
+
+            <div className="my-6">
+              <EmailCaptureForm 
+                testName="Тест на эмпатию (Бойко)" 
+                onSubmit={(email) => console.log('Email captured:', email)}
+              />
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-4">

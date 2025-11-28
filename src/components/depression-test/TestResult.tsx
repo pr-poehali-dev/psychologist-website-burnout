@@ -4,6 +4,7 @@ import Icon from '@/components/ui/icon';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { jsPDF } from 'jspdf';
 import { TestResult as TestResultType, getResult } from './testData';
+import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
 
 interface TestResultProps {
   score: number;
@@ -302,6 +303,13 @@ const TestResult = ({ score, testHistory, onReset, onBooking }: TestResultProps)
                   <span>Депрессия — это излечимое состояние при правильном подходе</span>
                 </li>
               </ul>
+            </div>
+
+            <div className="my-6">
+              <EmailCaptureForm 
+                testName="Тест на депрессию (BDI-II)" 
+                onSubmit={(email) => console.log('Email captured:', email)}
+              />
             </div>
 
             <div className="space-y-3">

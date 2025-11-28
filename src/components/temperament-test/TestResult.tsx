@@ -4,6 +4,7 @@ import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Label } from 'recharts';
 import { getTemperamentType, getTemperamentDescription, calculateScores, TestResult as TestResultType } from './testData';
+import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
 
 interface TestResultProps {
   answers: (string | null)[];
@@ -264,6 +265,13 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
                   <span>Нет «плохих» темпераментов — у каждого свои сильные стороны</span>
                 </li>
               </ul>
+            </div>
+
+            <div className="my-6">
+              <EmailCaptureForm 
+                testName="Тест на темперамент (EPI)" 
+                onSubmit={(email) => console.log('Email captured:', email)}
+              />
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
