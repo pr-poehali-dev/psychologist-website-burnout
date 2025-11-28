@@ -129,7 +129,7 @@ const TargetAudienceSection = ({ customPoints, hideButtons }: TargetAudienceSect
                       <div>
                         <h4 className="text-lg font-bold mb-2">Специализация</h4>
                         <p className="text-sm text-foreground/70">
-                          Работаю с IT-специалистами и знаю специфику высоконагруженных профессий изнутри
+                          Работаю с IT-специалистами, предпринимателями и знаю специфику высоконагруженных профессий изнутри
                         </p>
                       </div>
                     </div>
