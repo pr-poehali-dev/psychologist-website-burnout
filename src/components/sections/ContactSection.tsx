@@ -15,6 +15,7 @@ interface ContactSectionProps {
 
 const ContactSection = ({ onBooking }: ContactSectionProps) => {
   const { ref, isVisible } = useScrollReveal();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,6 +40,7 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
       if (response.ok) {
         toast.success('Спасибо! Я свяжусь с вами в ближайшее время.');
         setFormData({ name: '', email: '', phone: '', message: '' });
+        setIsDialogOpen(false);
       } else {
         toast.error(data.error || 'Ошибка отправки. Попробуйте позже.');
       }
@@ -89,7 +91,7 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
                     <div className="flex-1">
                       <h4 className="font-semibold mb-1">Остались вопросы?</h4>
                       <p className="text-sm text-muted-foreground mb-3">Напишите мне, и я отвечу в течение 24 часов</p>
-                      <Dialog>
+                      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                         <DialogTrigger asChild>
                           <Button variant="outline" className="w-full">
                             <Icon name="Mail" size={18} className="mr-2" />
