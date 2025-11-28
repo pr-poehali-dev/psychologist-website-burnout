@@ -22,10 +22,29 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Спасибо! Я свяжусь с вами в ближайшее время.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/559666a4-a8c3-4ba8-b182-ee45f07594f2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        toast.success('Спасибо! Я свяжусь с вами в ближайшее время.');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        toast.error(data.error || 'Ошибка отправки. Попробуйте позже.');
+      }
+    } catch (error) {
+      toast.error('Ошибка соединения. Проверьте интернет.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -63,6 +82,21 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                      <Icon name="Send" className="text-blue-500" size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold mb-1">Telegram</h4>
+                      <p className="text-sm text-muted-foreground mb-3">Быстрый ответ на ваш вопрос</p>
+                      <Button variant="outline" className="w-full" asChild>
+                        <a href="https://t.me/algonpsy" target="_blank" rel="noopener noreferrer">
+                          <Icon name="Send" size={18} className="mr-2" />
+                          Написать в Telegram
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Icon name="MessageCircle" className="text-primary" size={24} />
                     </div>
@@ -72,7 +106,7 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button variant="outline" className="w-full">
-                            <Icon name="Send" size={18} className="mr-2" />
+                            <Icon name="Mail" size={18} className="mr-2" />
                             Задать вопрос
                           </Button>
                         </DialogTrigger>
@@ -174,6 +208,19 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
                       <h4 className="font-semibold mb-2">Первая консультация</h4>
                       <p className="text-sm text-muted-foreground">
                         Знакомство, диагностика запроса и составление плана работы — 30 минут бесплатно
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border-2 border-green-200 bg-green-50">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <Icon name="ShieldCheck" className="text-green-600" size={24} />
+                    <div>
+                      <h4 className="font-semibold mb-2 text-green-900">Гарантия результата</h4>
+                      <p className="text-sm text-green-800">
+                        Если после первой полной сессии вы не почувствуете улучшений или не захотите продолжать работу — вернём деньги. Без вопросов.
                       </p>
                     </div>
                   </div>

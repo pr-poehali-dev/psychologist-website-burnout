@@ -13,7 +13,7 @@ const EmailCaptureForm = ({ testName, onSubmit }: EmailCaptureFormProps) => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (email && email.includes('@')) {
@@ -22,6 +22,22 @@ const EmailCaptureForm = ({ testName, onSubmit }: EmailCaptureFormProps) => {
           test: testName,
           email: email
         });
+      }
+      
+      // Send to backend
+      try {
+        await fetch('https://functions.poehali.dev/559666a4-a8c3-4ba8-b182-ee45f07594f2', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: email,
+            testName: testName
+          }),
+        });
+      } catch (error) {
+        console.error('Failed to send lead:', error);
       }
       
       if (onSubmit) {
