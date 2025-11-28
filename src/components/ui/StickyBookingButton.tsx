@@ -32,32 +32,18 @@ const StickyBookingButton = ({ onBooking }: StickyBookingButtonProps) => {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300 ${
-        isVisible ? 'translate-y-0' : 'translate-y-full'
+      className={`fixed bottom-4 right-4 z-40 transition-all duration-300 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20 pointer-events-none'
       }`}
     >
-      <div className="bg-gradient-to-r from-primary to-primary/90 shadow-2xl">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between gap-4">
-            <div className="hidden md:block">
-              <p className="text-white font-bold text-lg">
-                Готовы начать путь к изменениям?
-              </p>
-              <p className="text-white/80 text-sm">
-                Осталось 3 окна на этой неделе
-              </p>
-            </div>
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90 font-bold shadow-lg w-full md:w-auto"
-              onClick={handleClick}
-            >
-              <Icon name="Send" size={20} className="mr-2" />
-              Записаться на консультацию
-            </Button>
-          </div>
-        </div>
-      </div>
+      <Button
+        size="lg"
+        className="bg-primary text-white hover:bg-primary/90 font-semibold shadow-xl rounded-full px-6 py-6"
+        onClick={handleClick}
+      >
+        <Icon name="Send" size={20} className="mr-2" />
+        Записаться
+      </Button>
     </div>
   );
 };
