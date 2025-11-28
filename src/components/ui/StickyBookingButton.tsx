@@ -52,7 +52,7 @@ const StickyBookingButton = ({ onBooking }: StickyBookingButtonProps) => {
               className="bg-white text-primary hover:bg-white/90 font-bold shadow-lg w-full md:w-auto"
               onClick={handleClick}
             >
-              <Icon name="Calendar" size={20} className="mr-2" />
+              <Icon name="Send" size={20} className="mr-2" />
               Записаться на консультацию
             </Button>
           </div>

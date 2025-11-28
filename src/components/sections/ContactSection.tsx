@@ -70,28 +70,28 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon name="Calendar" className="text-primary" size={24} />
+                      <Icon name="Send" className="text-primary" size={24} />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Быстрая запись</h4>
-                      <p className="text-sm text-muted-foreground mb-3">Выберите удобное время через онлайн-календарь</p>
+                      <p className="text-sm text-muted-foreground mb-3">Запишитесь на консультацию через Telegram</p>
                       <Button className="w-full" onClick={onBooking}>
-                        <Icon name="Calendar" size={18} className="mr-2" />
-                        Записаться онлайн
+                        <Icon name="Send" size={18} className="mr-2" />
+                        Записаться в Telegram
                       </Button>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                      <Icon name="Send" className="text-blue-500" size={24} />
+                    <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                      <Icon name="Phone" className="text-green-600" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold mb-1">Telegram</h4>
-                      <p className="text-sm text-muted-foreground mb-3">Быстрый ответ на ваш вопрос</p>
+                      <h4 className="font-semibold mb-1">Позвонить</h4>
+                      <p className="text-sm text-muted-foreground mb-3">Свяжитесь со мной по телефону</p>
                       <Button variant="outline" className="w-full" asChild>
-                        <a href="https://t.me/algonpsy" target="_blank" rel="noopener noreferrer">
-                          <Icon name="Send" size={18} className="mr-2" />
-                          Написать в Telegram
+                        <a href="tel:+79260863636">
+                          <Icon name="Phone" size={18} className="mr-2" />
+                          +7 (926) 086-36-36
                         </a>
                       </Button>
                     </div>

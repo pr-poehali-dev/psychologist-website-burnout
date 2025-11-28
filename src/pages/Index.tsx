@@ -20,7 +20,7 @@ import SEOTextSection from '@/components/sections/SEOTextSection';
 
 const Index = () => {
   const handleBooking = () => {
-    window.open('https://calink.ru/Algon', '_blank');
+    window.open('https://t.me/algonpsy', '_blank');
   };
 
   const services = [

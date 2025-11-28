@@ -19,7 +19,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 const Relationships = () => {
   const handleBooking = () => {
-    window.open('https://calink.ru/Algon', '_blank');
+    window.open('https://t.me/algonpsy', '_blank');
   };
 
   const heroContent = {

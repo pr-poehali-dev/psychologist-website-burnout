@@ -70,7 +70,7 @@ const HeroSection = ({ onBooking, customContent }: HeroSectionProps) => {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button size="lg" className="text-lg px-8 btn-pulse btn-float btn-pulse-glow" onClick={handleBookingClick}>
-              <Icon name="Calendar" size={20} className="mr-2" />
+              <Icon name="Send" size={20} className="mr-2" />
               Записаться на консультацию
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 btn-float" asChild>
