@@ -4,10 +4,20 @@ import Icon from '@/components/ui/icon';
 
 interface HeroSectionProps {
   onBooking: () => void;
+  customContent?: {
+    badge?: string;
+    title?: string;
+    subtitle?: string;
+    description?: string;
+  };
 }
 
-const HeroSection = ({ onBooking }: HeroSectionProps) => {
+const HeroSection = ({ onBooking, customContent }: HeroSectionProps) => {
   const yearsOfPractice = new Date().getFullYear() - 2005;
+
+  const badge = customContent?.badge || 'Александр Гонтарь — ваш психолог';
+  const title = customContent?.title || 'Путь от выгорания к балансу и энергии';
+  const description = customContent?.description || 'Практическая психология • Когнитивно-поведенческая терапия (КПТ) • Доказательный подход';
 
   return (
     <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
@@ -23,12 +33,16 @@ const HeroSection = ({ onBooking }: HeroSectionProps) => {
               />
             </div>
           </div>
-          <Badge variant="outline" className="text-primary border-primary">Александр Гонтарь — ваш психолог</Badge>
+          <Badge variant="outline" className="text-primary border-primary">{badge}</Badge>
           <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-            Путь от выгорания к <span className="text-primary">балансу</span> и энергии
+            {title.includes('балансу') ? (
+              <>Путь от выгорания к <span className="text-primary">балансу</span> и энергии</>
+            ) : (
+              title
+            )}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Практическая психология • Когнитивно-поведенческая терапия (КПТ) • Доказательный подход
+            {description}
           </p>
           <div className="flex justify-center gap-8 py-4">
             <div className="text-center">

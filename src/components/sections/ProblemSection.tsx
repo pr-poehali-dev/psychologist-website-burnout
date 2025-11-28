@@ -1,6 +1,14 @@
 import Icon from '@/components/ui/icon';
 
-const ProblemSection = () => {
+interface ProblemSectionProps {
+  customProblems?: Array<{
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+}
+
+const ProblemSection = ({ customProblems }: ProblemSectionProps) => {
   const questions = [
     'Что на самом деле мешает специалистам получать удовольствие от своего призвания?',
     'Как настроить свой день, чтобы хватало времени на себя?',
@@ -37,6 +45,38 @@ const ProblemSection = () => {
       reason: 'Выгорание требует комплексного подхода: работа с мышлением + восстановление энергетической системы + изменение рабочих привычек + формирование устойчивых практик самоподдержки.'
     }
   ];
+
+  if (customProblems) {
+    return (
+      <section className="py-16 md:py-24 bg-gradient-to-b from-accent/10 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              С чем я помогаю
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {customProblems.map((problem, index) => (
+                <div
+                  key={index}
+                  className="p-6 bg-white rounded-xl shadow-sm border border-accent/20 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 p-3 bg-primary/10 rounded-full">
+                      <Icon name={problem.icon} size={24} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2">{problem.title}</h3>
+                      <p className="text-foreground/70">{problem.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-accent/10 to-white">

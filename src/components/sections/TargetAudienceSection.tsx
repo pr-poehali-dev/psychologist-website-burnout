@@ -1,7 +1,15 @@
 import Icon from '@/components/ui/icon';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
-const TargetAudienceSection = () => {
-  const targetPoints = [
+interface TargetAudienceSectionProps {
+  customPoints?: string[];
+}
+
+const TargetAudienceSection = ({ customPoints }: TargetAudienceSectionProps) => {
+  const navigate = useNavigate();
+
+  const targetPoints = customPoints || [
     'IT-специалист, менеджер, врач — ваш ресурс на нуле, а дедлайны не кончаются',
     'Просыпаетесь уже уставшим, кофе не бодрит, а лишь немного отдаляет сон',
     'Не можете сосредоточиться, работа занимает в 3 раза больше времени',
@@ -9,10 +17,25 @@ const TargetAudienceSection = () => {
     'Понимаете, что так дальше нельзя, но не знаете, с какой стороны подступиться'
   ];
 
+  const showRelationshipsButton = !customPoints;
+
   return (
     <section className="py-16 md:py-20 bg-gradient-to-b from-white to-accent/10">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
+          {showRelationshipsButton && (
+            <div className="flex justify-center mb-8">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all"
+                onClick={() => navigate('/relationships')}
+              >
+                <Icon name="Heart" size={20} className="mr-2" />
+                Если у вас проблемы в отношениях
+              </Button>
+            </div>
+          )}
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Это предложение для вас, если вы:
           </h2>
