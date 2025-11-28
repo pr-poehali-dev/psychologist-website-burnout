@@ -53,13 +53,13 @@ const Header = ({ onBooking }: HeaderProps) => {
   }, []);
 
   const navLinks = [
-    { href: '#about', label: 'Обо мне' },
-    { href: '#services', label: 'Услуги' },
-    { href: '/tests', label: 'Тесты' },
-    { href: '#cases', label: 'Кейсы' },
-    { href: '/manifesto', label: 'Манифест' },
-    { href: '#articles', label: 'Статьи' },
-    { href: '#reviews', label: 'Отзывы' },
+    { href: '#about', label: 'Обо мне', isSection: true },
+    { href: '#services', label: 'Услуги', isSection: true },
+    { href: '/tests', label: 'Тесты', isSection: false },
+    { href: '#cases', label: 'Кейсы', isSection: true },
+    { href: '/manifesto', label: 'Манифест', isSection: false },
+    { href: '#articles', label: 'Статьи', isSection: true },
+    { href: '#reviews', label: 'Отзывы', isSection: true },
   ];
 
   const isSpecialtyPage = location.pathname === '/relationships' || location.pathname === '/burnout';
@@ -93,15 +93,21 @@ const Header = ({ onBooking }: HeaderProps) => {
         </div>
 
         <nav className="hidden lg:flex gap-4 items-center">
-          {!isSpecialtyPage && navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`font-bold transition-all duration-300 text-sm ${activeSection === link.href ? 'text-primary border-2 border-primary px-3 py-2 rounded-lg' : 'text-foreground/70 hover:text-primary'}`}
-            >
-              {link.label}
-            </a>
-          ))}
+          {!isSpecialtyPage && navLinks.map((link) => {
+            const isActive = link.isSection 
+              ? activeSection === link.href 
+              : location.pathname === link.href;
+            
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`font-bold transition-all duration-300 text-sm ${isActive ? 'text-primary border-2 border-primary px-3 py-2 rounded-lg' : 'text-foreground/70 hover:text-primary'}`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           {isSpecialtyPage && (
             <Button
               variant="outline"
@@ -148,16 +154,22 @@ const Header = ({ onBooking }: HeaderProps) => {
                   На главную
                 </Button>
               )}
-              {!isSpecialtyPage && navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleNavClick}
-                  className={`text-lg font-bold transition-all duration-300 py-2 ${activeSection === link.href ? 'text-primary border-2 border-primary px-4 rounded-lg' : 'text-foreground/70 hover:text-primary'}`}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {!isSpecialtyPage && navLinks.map((link) => {
+                const isActive = link.isSection 
+                  ? activeSection === link.href 
+                  : location.pathname === link.href;
+                
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={handleNavClick}
+                    className={`text-lg font-bold transition-all duration-300 py-2 ${isActive ? 'text-primary border-2 border-primary px-4 rounded-lg' : 'text-foreground/70 hover:text-primary'}`}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
               <div className="border-t pt-4 mt-2 space-y-3">
                 <Button 
                   className="w-full bg-red-600 hover:bg-red-700 text-white" 
