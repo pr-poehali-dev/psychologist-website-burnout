@@ -6,8 +6,14 @@ import {
 } from '@/components/ui/accordion';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const FAQSection = () => {
+interface FAQSectionProps {
+  customSubtitle?: string;
+}
+
+const FAQSection = ({ customSubtitle }: FAQSectionProps = {}) => {
   const { ref, isVisible } = useScrollReveal();
+  
+  const defaultSubtitle = 'Ответы на вопросы, которые помогут принять решение';
 
   const faqs = [
     {
@@ -51,7 +57,7 @@ const FAQSection = () => {
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">Частые вопросы</h3>
             <p className="text-xl text-muted-foreground">
-              Ответы на вопросы, которые помогут принять решение
+              {customSubtitle || defaultSubtitle}
             </p>
           </div>
 

@@ -169,7 +169,7 @@ const Relationships = () => {
       <ArticlesSection articles={articles} />
       <SocialSection />
       <ReviewsSection reviews={reviews} />
-      <FAQSection />
+      <FAQSection customSubtitle="Ответы на вопросы о парной терапии и работе с отношениями" />
       <ContactSection onBooking={handleBooking} />
       <Footer />
     </div>

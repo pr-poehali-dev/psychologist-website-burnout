@@ -165,7 +165,7 @@ const Burnout = () => {
       <ArticlesSection articles={articles} />
       <SocialSection />
       <ReviewsSection reviews={reviews} />
-      <FAQSection />
+      <FAQSection customSubtitle="Ответы на вопросы о работе с выгоранием и восстановлении энергии" />
       <ContactSection onBooking={handleBooking} />
       <Footer />
     </div>
