@@ -15,6 +15,7 @@ import ReviewsSection from '@/components/sections/ReviewsSection';
 import FAQSection from '@/components/sections/FAQSection';
 import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/sections/Footer';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 const Relationships = () => {
   const handleBooking = () => {
@@ -149,9 +150,16 @@ const Relationships = () => {
     },
   ];
 
+  const breadcrumbs = [
+    { label: 'Терапия отношений', href: '/relationships' }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-accent/20">
       <Header onBooking={handleBooking} />
+      <div className="container mx-auto px-4">
+        <Breadcrumbs items={breadcrumbs} />
+      </div>
       <HeroSection onBooking={handleBooking} customContent={heroContent} />
       <TargetAudienceSection customPoints={targetPoints} hideButtons />
       <TestPreviewSection />

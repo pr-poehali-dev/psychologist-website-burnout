@@ -1,11 +1,16 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 const Manifesto = () => {
   const scrollToContact = () => {
     window.location.href = "/#contact";
   };
+
+  const breadcrumbs = [
+    { label: 'Манифест', href: '/manifesto' }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -26,6 +31,10 @@ const Manifesto = () => {
           </div>
         </div>
       </header>
+
+      <div className="container mx-auto px-4">
+        <Breadcrumbs items={breadcrumbs} />
+      </div>
 
       <main className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="space-y-12">
