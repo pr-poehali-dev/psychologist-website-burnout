@@ -117,7 +117,6 @@ const Index = () => {
       <HeroSection onBooking={handleBooking} />
       <TargetAudienceSection />
       <TestPreviewSection />
-      <ProblemSection />
       <CasesSection cases={cases} />
       <MistakesSection />
       <AboutSection />
