@@ -28,8 +28,8 @@ const ArticlesSection = ({ articles }: ArticlesSectionProps) => {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {articles.map((article, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer group" asChild>
-                <a href={article.link} target="_blank" rel="noopener noreferrer">
+              <a key={index} href={article.link} target="_blank" rel="noopener noreferrer" className="block group">
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
                   <CardHeader>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                       <Icon name="Clock" size={14} />
@@ -46,8 +46,8 @@ const ArticlesSection = ({ articles }: ArticlesSectionProps) => {
                       <Icon name="ArrowRight" size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </CardContent>
-                </a>
-              </Card>
+                </Card>
+              </a>
             ))}
           </div>
         </div>
