@@ -81,21 +81,7 @@ const ContactSection = ({ onBooking }: ContactSectionProps) => {
                       </Button>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                      <Icon name="Phone" className="text-green-600" size={24} />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold mb-1">Позвонить</h4>
-                      <p className="text-sm text-muted-foreground mb-3">Свяжитесь со мной по телефону</p>
-                      <Button variant="outline" className="w-full" asChild>
-                        <a href="tel:+79260863636">
-                          <Icon name="Phone" size={18} className="mr-2" />
-                          +7 (926) 086-36-36
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
+
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Icon name="MessageCircle" className="text-primary" size={24} />
