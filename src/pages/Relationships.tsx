@@ -156,7 +156,7 @@ const Relationships = () => {
       <TargetAudienceSection customPoints={targetPoints} hideButtons />
       <TestPreviewSection />
       <ProblemSection customProblems={problems} />
-      <CasesSection cases={cases} />
+      <CasesSection cases={cases} hideNote />
       <MistakesSection />
       <AboutSection />
       <MethodSection />

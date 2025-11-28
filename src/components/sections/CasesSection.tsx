@@ -13,9 +13,10 @@ interface CaseItem {
 
 interface CasesSectionProps {
   cases: CaseItem[];
+  hideNote?: boolean;
 }
 
-const CasesSection = ({ cases }: CasesSectionProps) => {
+const CasesSection = ({ cases, hideNote }: CasesSectionProps) => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -64,9 +65,11 @@ const CasesSection = ({ cases }: CasesSectionProps) => {
               </Card>
             ))}
           </div>
-          <p className="text-center text-sm text-muted-foreground mt-8 italic">
-            Тест MBI-HSS — золотой стандарт диагностики выгорания, используемый во всем мире
-          </p>
+          {!hideNote && (
+            <p className="text-center text-sm text-muted-foreground mt-8 italic">
+              Тест MBI-HSS — золотой стандарт диагностики выгорания, используемый во всем мире
+            </p>
+          )}
         </div>
       </div>
     </section>
