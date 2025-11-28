@@ -87,6 +87,55 @@ const TargetAudienceSection = ({ customPoints, hideButtons }: TargetAudienceSect
                   Не уверены, что выбрать? Запишитесь на консультацию, и мы определим направление работы вместе
                 </p>
               </div>
+
+              <div className="mt-16 max-w-4xl mx-auto">
+                <h3 className="text-2xl md:text-3xl font-bold text-center mb-10">
+                  Почему выбирают меня
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="p-6 bg-white rounded-xl shadow-sm border border-accent/20 hover:shadow-md transition-all duration-300">
+                    <div className="flex flex-col items-center text-center gap-4">
+                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Icon name="Target" size={28} className="text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold mb-2">Научный подход</h4>
+                        <p className="text-sm text-foreground/70">
+                          Использую доказательные методы когнитивно-поведенческой терапии и современные исследования нейропластичности
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 bg-white rounded-xl shadow-sm border border-accent/20 hover:shadow-md transition-all duration-300">
+                    <div className="flex flex-col items-center text-center gap-4">
+                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Icon name="Lightbulb" size={28} className="text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold mb-2">Практичность</h4>
+                        <p className="text-sm text-foreground/70">
+                          Даю конкретные инструменты, которые работают уже после первой сессии. Без воды и абстракций
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 bg-white rounded-xl shadow-sm border border-accent/20 hover:shadow-md transition-all duration-300">
+                    <div className="flex flex-col items-center text-center gap-4">
+                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Icon name="Users" size={28} className="text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold mb-2">Специализация</h4>
+                        <p className="text-sm text-foreground/70">
+                          Работаю с IT-специалистами и знаю специфику высоконагруженных профессий изнутри
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
