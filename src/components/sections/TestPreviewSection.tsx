@@ -6,6 +6,45 @@ import { useNavigate } from 'react-router-dom';
 const TestPreviewSection = () => {
   const navigate = useNavigate();
 
+  const tests = [
+    {
+      title: 'Тест на депрессию',
+      subtitle: 'Шкала депрессии Бека (BDI-II)',
+      description: 'Оценка настроения, когнитивных изменений, физических симптомов и мотивации. 21 вопрос для определения выраженности депрессивных симптомов',
+      icon: 'Brain',
+      gradient: 'from-blue-500 to-indigo-600',
+      bgGradient: 'from-blue-50 to-indigo-50',
+      border: 'border-blue-200'
+    },
+    {
+      title: 'Тест на тревожность',
+      subtitle: 'Шкала тревоги Бека (BAI)',
+      description: 'Измерение физических и эмоциональных проявлений тревоги. 21 вопрос для оценки интенсивности тревожных симптомов',
+      icon: 'Activity',
+      gradient: 'from-orange-500 to-red-600',
+      bgGradient: 'from-orange-50 to-red-50',
+      border: 'border-orange-200'
+    },
+    {
+      title: 'Тест на темперамент',
+      subtitle: 'Опросник Айзенка (EPI)',
+      description: 'Определение типа темперамента: холерик, сангвиник, флегматик или меланхолик. 57 вопросов для анализа экстраверсии и нейротизма',
+      icon: 'Users',
+      gradient: 'from-purple-500 to-pink-600',
+      bgGradient: 'from-purple-50 to-pink-50',
+      border: 'border-purple-200'
+    },
+    {
+      title: 'Тест на эмпатию',
+      subtitle: 'Методика Бойко',
+      description: 'Оценка способности к эмпатии и эмоциональному отклику. 36 вопросов для определения уровня сопереживания и понимания других людей',
+      icon: 'Heart',
+      gradient: 'from-green-500 to-teal-600',
+      bgGradient: 'from-green-50 to-teal-50',
+      border: 'border-green-200'
+    }
+  ];
+
   return (
     <section id="tests-preview" className="py-16 md:py-20 bg-gradient-to-b from-white to-primary/5">
       <div className="container mx-auto px-4">
@@ -20,69 +59,29 @@ const TestPreviewSection = () => {
         </div>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
-          <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                  <Icon name="Brain" size={32} className="text-white" />
+          {tests.map((test, index) => (
+            <Card 
+              key={index}
+              className={`border-2 ${test.border} bg-gradient-to-br ${test.bgGradient} hover:shadow-xl transition-all duration-300 group cursor-pointer`}
+            >
+              <CardContent className="p-6">
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${test.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <Icon name={test.icon} size={32} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-1">{test.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      {test.subtitle}
+                    </p>
+                    <p className="text-xs text-foreground/60 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {test.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">Тест на депрессию</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Шкала депрессии Бека (BDI-II)
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-                  <Icon name="Activity" size={32} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">Тест на тревожность</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Шкала тревоги Бека (BAI)
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
-                  <Icon name="Users" size={32} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">Тест на темперамент</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Опросник Айзенка (EPI)
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-teal-50 hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6">
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
-                  <Icon name="Heart" size={32} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">Тест на эмпатию</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Методика Бойко
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         <div className="mt-8 text-center">
