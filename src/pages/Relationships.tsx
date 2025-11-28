@@ -153,7 +153,7 @@ const Relationships = () => {
     <div className="min-h-screen bg-gradient-to-b from-white to-accent/20">
       <Header onBooking={handleBooking} />
       <HeroSection onBooking={handleBooking} customContent={heroContent} />
-      <TargetAudienceSection customPoints={targetPoints} />
+      <TargetAudienceSection customPoints={targetPoints} hideButtons />
       <TestPreviewSection />
       <ProblemSection customProblems={problems} />
       <CasesSection cases={cases} />

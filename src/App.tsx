@@ -9,6 +9,7 @@ import Manifesto from "./pages/Manifesto";
 import Tests from "./pages/Tests";
 import ClientPortal from "./pages/ClientPortal";
 import Relationships from "./pages/Relationships";
+import Burnout from "./pages/Burnout";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/tests" element={<Tests />} />
           <Route path="/client-portal" element={<ClientPortal />} />
           <Route path="/relationships" element={<Relationships />} />
+          <Route path="/burnout" element={<Burnout />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
