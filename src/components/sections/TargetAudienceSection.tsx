@@ -26,7 +26,7 @@ const TargetAudienceSection = ({ customPoints, hideButtons }: TargetAudienceSect
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {showButtons && (
-            <div className="mb-16">
+            <div>
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
                 Выберите, с чем вам нужна помощь:
               </h2>
@@ -90,8 +90,8 @@ const TargetAudienceSection = ({ customPoints, hideButtons }: TargetAudienceSect
             </div>
           )}
 
-          <div className="max-w-3xl mx-auto">
-            {hideButtons && (
+          {hideButtons && (
+            <div>
               <div className="flex justify-center mb-8">
                 <Button
                   size="lg"
@@ -103,26 +103,26 @@ const TargetAudienceSection = ({ customPoints, hideButtons }: TargetAudienceSect
                   Вернуться на главную
                 </Button>
               </div>
-            )}
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Это предложение для вас, если вы:
-            </h2>
-            <div className="space-y-4">
-              {targetPoints.map((point, index) => (
-                <div 
-                  key={index} 
-                  className="flex gap-4 items-start p-4 rounded-lg hover:bg-accent/20 transition-all duration-300"
-                >
-                  <div className="flex-shrink-0 mt-1">
-                    <Icon name="CircleCheck" size={20} className="text-primary" />
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+                Это предложение для вас, если вы:
+              </h2>
+              <div className="max-w-3xl mx-auto space-y-4">
+                {targetPoints.map((point, index) => (
+                  <div 
+                    key={index} 
+                    className="flex gap-4 items-start p-4 rounded-lg hover:bg-accent/20 transition-all duration-300"
+                  >
+                    <div className="flex-shrink-0 mt-1">
+                      <Icon name="CircleCheck" size={20} className="text-primary" />
+                    </div>
+                    <p className="text-lg text-foreground/80 leading-relaxed">
+                      {point}
+                    </p>
                   </div>
-                  <p className="text-lg text-foreground/80 leading-relaxed">
-                    {point}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
