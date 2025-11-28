@@ -3,6 +3,8 @@ import Footer from '@/components/sections/Footer';
 import TestsNavigationSection from '@/components/sections/TestsNavigationSection';
 import DepressionTestSection from '@/components/sections/DepressionTestSection';
 import AnxietyTestSection from '@/components/sections/AnxietyTestSection';
+import TemperamentTestSection from '@/components/sections/TemperamentTestSection';
+import EmpathyTestSection from '@/components/sections/EmpathyTestSection';
 
 const Tests = () => {
   const handleBooking = () => {
@@ -15,6 +17,8 @@ const Tests = () => {
       <TestsNavigationSection />
       <DepressionTestSection onBooking={handleBooking} />
       <AnxietyTestSection onBooking={handleBooking} />
+      <TemperamentTestSection onBooking={handleBooking} />
+      <EmpathyTestSection onBooking={handleBooking} />
       <Footer />
     </div>
   );

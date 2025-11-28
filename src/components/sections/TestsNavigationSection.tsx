@@ -32,6 +32,28 @@ const TestsNavigationSection = () => {
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200',
       featured: false,
+    },
+    {
+      id: 'temperament-test',
+      title: 'Тест на темперамент',
+      subtitle: 'Опросник Айзенка (EPI)',
+      description: 'Классическая методика из 57 вопросов для определения типа темперамента по шкалам экстраверсии и нейротизма',
+      icon: 'User',
+      color: 'from-purple-500 to-pink-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'border-purple-200',
+      featured: false,
+    },
+    {
+      id: 'empathy-test',
+      title: 'Тест на эмпатию',
+      subtitle: 'Методика В.В. Бойко',
+      description: 'Диагностика уровня эмпатических способностей — умения понимать и разделять эмоции других людей',
+      icon: 'Users',
+      color: 'from-teal-500 to-cyan-600',
+      bgColor: 'bg-teal-50',
+      borderColor: 'border-teal-200',
+      featured: false,
     }
   ];
 
@@ -103,10 +125,10 @@ const TestsNavigationSection = () => {
               <div className="text-sm text-blue-900">
                 <p className="font-medium mb-2">Важная информация о тестах:</p>
                 <ul className="space-y-2">
-                  <li>• Тесты основаны на стандартизированных методиках Аарона Бека</li>
+                  <li>• Все тесты основаны на научно-валидированных психологических методиках</li>
                   <li>• Результаты являются ориентировочными и не заменяют профессиональную диагностику</li>
                   <li>• Тесты помогают определить, когда стоит обратиться к специалисту</li>
-                  <li>• Все данные остаются конфиденциальными и не сохраняются на сервере</li>
+                  <li>• Все данные остаются конфиденциальными и сохраняются только в вашем браузере</li>
                 </ul>
               </div>
             </div>
