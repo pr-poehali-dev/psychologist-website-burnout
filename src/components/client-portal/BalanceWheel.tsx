@@ -8,6 +8,7 @@ import Icon from '@/components/ui/icon';
 import { Slider } from '@/components/ui/slider';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { registerCyrillicFonts } from '@/lib/pdf-fonts';
 
 interface LifeArea {
   name: string;
@@ -108,20 +109,21 @@ const BalanceWheel = () => {
     }
   };
 
-  const downloadBalancePdf = () => {
+  const downloadBalancePdf = async () => {
     const canvas = document.createElement('canvas');
     canvas.width = 800;
     canvas.height = 800;
     drawWheel(canvas);
 
     const doc = new jsPDF('p', 'mm', 'a4');
+    await registerCyrillicFonts(doc);
     
-    doc.setFont('helvetica', 'bold');
+    doc.setFont('Roboto', 'bold');
     doc.setFontSize(16);
     doc.text('Колесо баланса жизни', 14, 15);
     
     doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     doc.text(`Дата: ${new Date().toLocaleDateString('ru-RU')}`, 14, 22);
 
     const imgData = canvas.toDataURL('image/png');
@@ -140,7 +142,7 @@ const BalanceWheel = () => {
       head: [['Сфера', 'Оценка', 'Что забирает энергию', 'Что даёт энергию', 'Действия']],
       body: tableData,
       styles: { 
-        font: 'helvetica',
+        font: 'Roboto',
         fontSize: 8,
         cellPadding: 2,
       },

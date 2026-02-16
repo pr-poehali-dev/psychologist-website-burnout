@@ -7,6 +7,7 @@ import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { registerCyrillicFonts } from '@/lib/pdf-fonts';
 
 interface ABCDRow {
   a: string;
@@ -38,15 +39,16 @@ const ABCDTable = () => {
     }
   };
 
-  const downloadAbcdPdf = () => {
+  const downloadAbcdPdf = async () => {
     const doc = new jsPDF('l', 'mm', 'a4');
+    await registerCyrillicFonts(doc);
     
-    doc.setFont('helvetica', 'bold');
+    doc.setFont('Roboto', 'bold');
     doc.setFontSize(16);
     doc.text('ABCDE таблица (КПТ)', 14, 15);
     
     doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     doc.text(`Дата: ${new Date().toLocaleDateString('ru-RU')}`, 14, 22);
 
     const tableData = abcdRows.map((row) => [
@@ -62,7 +64,7 @@ const ABCDTable = () => {
       head: [['Активирующее\nсобытие', 'Убеждения', 'Последствия', 'Оспаривание', 'Новая реакция']],
       body: tableData,
       styles: { 
-        font: 'helvetica',
+        font: 'Roboto',
         fontSize: 9,
         cellPadding: 3,
       },
