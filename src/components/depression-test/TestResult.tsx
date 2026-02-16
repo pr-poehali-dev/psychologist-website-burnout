@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { jsPDF } from 'jspdf';
+import { registerCyrillicFonts, addPdfBranding } from '@/lib/pdf-fonts';
 import { TestResult as TestResultType, getResult } from './testData';
 import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
 
@@ -17,105 +18,125 @@ const TestResult = ({ score, testHistory, onReset, onBooking }: TestResultProps)
   const result = getResult(score);
   const maxScore = 63;
 
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     const doc = new jsPDF();
+    await registerCyrillicFonts(doc);
     const date = new Date().toLocaleDateString('ru-RU');
 
-    doc.setFont('helvetica', 'bold');
+    let yPos = 20;
+
+    doc.setFont('Roboto', 'bold');
     doc.setFontSize(20);
-    doc.text('Rezultaty testa BDI-II', 105, 20, { align: 'center' });
+    doc.text('Результаты теста BDI-II', 105, yPos, { align: 'center' });
     
+    yPos += 10;
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Data prohojdeniya: ${date}`, 105, 30, { align: 'center' });
+    doc.setFont('Roboto', 'normal');
+    doc.text(`Дата прохождения: ${date}`, 105, yPos, { align: 'center' });
     
+    yPos += 5;
     doc.setDrawColor(200, 200, 200);
-    doc.line(20, 35, 190, 35);
+    doc.line(20, yPos, 190, yPos);
     
+    yPos += 15;
     doc.setFontSize(16);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Vash rezultat:', 20, 50);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Ваш результат:', 20, yPos);
     
+    yPos += 20;
     doc.setFontSize(32);
     const scoreColor = score <= 13 ? [22, 163, 74] : score <= 19 ? [202, 138, 4] : score <= 28 ? [234, 88, 12] : [220, 38, 38];
     doc.setTextColor(...scoreColor);
-    doc.text(`${score} / ${maxScore}`, 105, 70, { align: 'center' });
+    doc.text(`${score} / ${maxScore}`, 105, yPos, { align: 'center' });
     
+    yPos += 15;
     doc.setFontSize(16);
-    doc.text(result.level, 105, 85, { align: 'center' });
+    doc.text(result.level, 105, yPos, { align: 'center' });
     
+    yPos += 20;
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Interpretaciya:', 20, 105);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Интерпретация:', 20, yPos);
     
-    doc.setFont('helvetica', 'normal');
+    yPos += 10;
+    doc.setFont('Roboto', 'normal');
     const descLines = doc.splitTextToSize(result.description, 170);
-    doc.text(descLines, 20, 115);
+    doc.text(descLines, 20, yPos);
+    yPos += descLines.length * 7;
     
-    doc.setFont('helvetica', 'bold');
-    doc.text('Rekomendacii:', 20, 135);
+    yPos += 10;
+    doc.setFont('Roboto', 'bold');
+    doc.text('Рекомендации:', 20, yPos);
     
-    doc.setFont('helvetica', 'normal');
+    yPos += 10;
+    doc.setFont('Roboto', 'normal');
     const recLines = doc.splitTextToSize(result.recommendation, 170);
-    doc.text(recLines, 20, 145);
+    doc.text(recLines, 20, yPos);
+    yPos += recLines.length * 7;
     
+    yPos += 15;
     doc.setFontSize(10);
-    doc.setFont('helvetica', 'italic');
+    doc.setFont('Roboto', 'bold');
     doc.setTextColor(100, 100, 100);
-    doc.text('Vajno:', 20, 175);
-    doc.setFont('helvetica', 'normal');
-    doc.text('- Etot test yavlyaetsya skriningovym instrumentom, a ne diagnozom', 20, 182);
-    doc.text('- Tolko specialist mojet postavit tochnyi diagnoz', 20, 189);
-    doc.text('- Depressiya - eto izlechimoe sostoyanie pri pravilnom podhode', 20, 196);
+    doc.text('Важно:', 20, yPos);
+    yPos += 7;
+    doc.setFont('Roboto', 'normal');
+    doc.text('- Этот тест является скрининговым инструментом, а не диагнозом', 20, yPos);
+    yPos += 7;
+    doc.text('- Только специалист может поставить точный диагноз', 20, yPos);
+    yPos += 7;
+    doc.text('- Депрессия — это излечимое состояние при правильном подходе', 20, yPos);
     
+    yPos += 14;
     doc.setDrawColor(200, 200, 200);
-    doc.line(20, 210, 190, 210);
+    doc.line(20, yPos, 190, yPos);
     
+    yPos += 10;
     doc.setFontSize(10);
     doc.setTextColor(0, 0, 0);
-    doc.text('Shkala depressii Beka (BDI-II)', 105, 220, { align: 'center' });
-    doc.text('Beck Depression Inventory - Second Edition', 105, 227, { align: 'center' });
-    
-    doc.setFontSize(9);
-    doc.setTextColor(100, 100, 100);
-    doc.text('Dlya zapisyi na konsultaciyu posetite: calink.ru/Algon', 105, 280, { align: 'center' });
+    doc.setFont('Roboto', 'normal');
+    doc.text('Шкала депрессии Бека (BDI-II)', 105, yPos, { align: 'center' });
+    yPos += 7;
+    doc.text('Beck Depression Inventory - Second Edition', 105, yPos, { align: 'center' });
 
-    doc.save(`BDI-II_rezultaty_${date.replace(/\./g, '-')}.pdf`);
+    await addPdfBranding(doc);
+    doc.save(`BDI-II_результаты_${date.replace(/\./g, '-')}.pdf`);
   };
 
-  const downloadHistoryPDF = () => {
+  const downloadHistoryPDF = async () => {
     if (testHistory.length === 0) return;
 
     const doc = new jsPDF();
+    await registerCyrillicFonts(doc);
     const date = new Date().toLocaleDateString('ru-RU');
 
-    doc.setFont('helvetica', 'bold');
+    doc.setFont('Roboto', 'bold');
     doc.setFontSize(20);
-    doc.text('Istoriya rezultatov BDI-II', 105, 20, { align: 'center' });
+    doc.text('История результатов BDI-II', 105, 20, { align: 'center' });
     
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Data otcheta: ${date}`, 105, 30, { align: 'center' });
+    doc.setFont('Roboto', 'normal');
+    doc.text(`Дата отчёта: ${date}`, 105, 30, { align: 'center' });
     
     doc.setDrawColor(200, 200, 200);
     doc.line(20, 35, 190, 35);
 
     doc.setFontSize(14);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Dinamika rezultatov:', 20, 50);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Динамика результатов:', 20, 50);
 
     let yPos = 65;
     testHistory.forEach((result, index) => {
-      const level = result.score <= 13 ? 'Minimalnaya' : result.score <= 19 ? 'Lyogkaya' : result.score <= 28 ? 'Umerennaya' : 'Tyazhyolaya';
+      const level = result.score <= 13 ? 'Минимальная' : result.score <= 19 ? 'Лёгкая' : result.score <= 28 ? 'Умеренная' : 'Тяжёлая';
       const color = result.score <= 13 ? [22, 163, 74] : result.score <= 19 ? [202, 138, 4] : result.score <= 28 ? [234, 88, 12] : [220, 38, 38];
       
       doc.setFontSize(11);
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('Roboto', 'bold');
       doc.setTextColor(0, 0, 0);
       doc.text(`${index + 1}. ${result.date}`, 25, yPos);
       
-      doc.setFont('helvetica', 'normal');
+      doc.setFont('Roboto', 'normal');
       doc.setTextColor(...color);
       doc.text(`${result.score} / 63`, 70, yPos);
       
@@ -124,7 +145,7 @@ const TestResult = ({ score, testHistory, onReset, onBooking }: TestResultProps)
       
       yPos += 10;
       
-      if (yPos > 270 && index < testHistory.length - 1) {
+      if (yPos > 260 && index < testHistory.length - 1) {
         doc.addPage();
         yPos = 20;
       }
@@ -132,24 +153,24 @@ const TestResult = ({ score, testHistory, onReset, onBooking }: TestResultProps)
 
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(10);
-    doc.setFont('helvetica', 'italic');
+    doc.setFont('Roboto', 'bold');
     
     const lastYPos = yPos + 15;
-    if (lastYPos > 250) {
+    if (lastYPos > 240) {
       doc.addPage();
-      doc.text('Legenda:', 20, 20);
-      doc.setFont('helvetica', 'normal');
-      doc.text('0-13: Minimalnaya depressiya', 25, 30);
-      doc.text('14-19: Lyogkaya depressiya', 25, 37);
-      doc.text('20-28: Umerennaya depressiya', 25, 44);
-      doc.text('29-63: Tyazhyolaya depressiya', 25, 51);
+      doc.text('Легенда:', 20, 20);
+      doc.setFont('Roboto', 'normal');
+      doc.text('0-13: Минимальная депрессия', 25, 30);
+      doc.text('14-19: Лёгкая депрессия', 25, 37);
+      doc.text('20-28: Умеренная депрессия', 25, 44);
+      doc.text('29-63: Тяжёлая депрессия', 25, 51);
     } else {
-      doc.text('Legenda:', 20, lastYPos);
-      doc.setFont('helvetica', 'normal');
-      doc.text('0-13: Minimalnaya depressiya', 25, lastYPos + 10);
-      doc.text('14-19: Lyogkaya depressiya', 25, lastYPos + 17);
-      doc.text('20-28: Umerennaya depressiya', 25, lastYPos + 24);
-      doc.text('29-63: Tyazhyolaya depressiya', 25, lastYPos + 31);
+      doc.text('Легенда:', 20, lastYPos);
+      doc.setFont('Roboto', 'normal');
+      doc.text('0-13: Минимальная депрессия', 25, lastYPos + 10);
+      doc.text('14-19: Лёгкая депрессия', 25, lastYPos + 17);
+      doc.text('20-28: Умеренная депрессия', 25, lastYPos + 24);
+      doc.text('29-63: Тяжёлая депрессия', 25, lastYPos + 31);
     }
 
     const pages = doc.getNumberOfPages();
@@ -157,10 +178,12 @@ const TestResult = ({ score, testHistory, onReset, onBooking }: TestResultProps)
       doc.setPage(i);
       doc.setFontSize(9);
       doc.setTextColor(100, 100, 100);
-      doc.text(`Stranica ${i} iz ${pages}`, 105, 285, { align: 'center' });
+      doc.setFont('Roboto', 'normal');
+      doc.text(`Страница ${i} из ${pages}`, 105, 285, { align: 'center' });
     }
 
-    doc.save(`BDI-II_istoriya_${date.replace(/\./g, '-')}.pdf`);
+    await addPdfBranding(doc);
+    doc.save(`BDI-II_история_${date.replace(/\./g, '-')}.pdf`);
   };
 
   return (

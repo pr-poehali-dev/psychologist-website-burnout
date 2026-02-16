@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
-import { registerCyrillicFonts } from '@/lib/pdf-fonts';
+import { registerCyrillicFonts, addPdfBranding } from '@/lib/pdf-fonts';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Label } from 'recharts';
 import { getTemperamentType, getTemperamentDescription, calculateScores, TestResult as TestResultType } from './testData';
 import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
@@ -95,9 +95,7 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
     const recLines = doc.splitTextToSize(description.recommendations, 170);
     doc.text(recLines, 20, yPos + 15);
 
-    doc.setFontSize(9);
-    doc.setTextColor(100, 100, 100);
-    doc.text('Для записи на консультацию: t.me/algonpsy', 105, 280, { align: 'center' });
+    await addPdfBranding(doc);
 
     doc.save(`Темперамент_${temperamentType}_${date.replace(/\./g, '-')}.pdf`);
   };

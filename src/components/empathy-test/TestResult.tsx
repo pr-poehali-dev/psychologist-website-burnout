@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
+import { registerCyrillicFonts, addPdfBranding } from '@/lib/pdf-fonts';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { getEmpathyLevel, calculateScore, TestResult as TestResultType } from './testData';
 import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
@@ -18,60 +19,79 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
   const result = getEmpathyLevel(score);
   const maxScore = 180;
 
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     const doc = new jsPDF();
+    await registerCyrillicFonts(doc);
     const date = new Date().toLocaleDateString('ru-RU');
 
-    doc.setFont('helvetica', 'bold');
+    let yPos = 20;
+
+    doc.setFont('Roboto', 'bold');
     doc.setFontSize(20);
-    doc.text('Test na empatiyu', 105, 20, { align: 'center' });
+    doc.text('Тест на эмпатию', 105, yPos, { align: 'center' });
     
+    yPos += 10;
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Data: ${date}`, 105, 30, { align: 'center' });
+    doc.setFont('Roboto', 'normal');
+    doc.text(`Дата: ${date}`, 105, yPos, { align: 'center' });
     
+    yPos += 5;
     doc.setDrawColor(200, 200, 200);
-    doc.line(20, 35, 190, 35);
+    doc.line(20, yPos, 190, yPos);
     
+    yPos += 15;
     doc.setFontSize(16);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Vash rezultat:', 20, 50);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Ваш результат:', 20, yPos);
     
+    yPos += 20;
     doc.setFontSize(32);
     doc.setTextColor(20, 184, 166);
-    doc.text(`${score} / ${maxScore}`, 105, 70, { align: 'center' });
+    doc.text(`${score} / ${maxScore}`, 105, yPos, { align: 'center' });
     
+    yPos += 15;
     doc.setFontSize(16);
-    doc.text(result.level, 105, 85, { align: 'center' });
+    doc.text(result.level, 105, yPos, { align: 'center' });
     
+    yPos += 20;
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Opisanie:', 20, 105);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Описание:', 20, yPos);
     
-    doc.setFont('helvetica', 'normal');
+    yPos += 10;
+    doc.setFont('Roboto', 'normal');
     const descLines = doc.splitTextToSize(result.description, 170);
-    doc.text(descLines, 20, 115);
+    doc.text(descLines, 20, yPos);
+    yPos += descLines.length * 7;
     
-    let yPos = 135;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Harakteristiki:', 20, yPos);
+    yPos += 10;
+    doc.setFont('Roboto', 'bold');
+    doc.text('Характеристики:', 20, yPos);
     
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     yPos += 10;
     result.traits.forEach((trait: string) => {
+      if (yPos > 260) {
+        doc.addPage();
+        yPos = 20;
+      }
       const lines = doc.splitTextToSize(`+ ${trait}`, 165);
       doc.text(lines, 25, yPos);
       yPos += lines.length * 7;
     });
     
     yPos += 5;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Riski:', 20, yPos);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Риски:', 20, yPos);
     
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     yPos += 10;
     result.risks.forEach((risk: string) => {
+      if (yPos > 260) {
+        doc.addPage();
+        yPos = 20;
+      }
       const lines = doc.splitTextToSize(`- ${risk}`, 165);
       doc.text(lines, 25, yPos);
       yPos += lines.length * 7;
@@ -83,14 +103,16 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
     }
     
     yPos += 5;
-    doc.setFont('helvetica', 'bold');
-    doc.text('Rekomendacii:', 20, yPos);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Рекомендации:', 20, yPos);
     
-    doc.setFont('helvetica', 'normal');
+    yPos += 10;
+    doc.setFont('Roboto', 'normal');
     const recLines = doc.splitTextToSize(result.recommendations, 170);
-    doc.text(recLines, 20, yPos + 10);
+    doc.text(recLines, 20, yPos);
 
-    doc.save(`Empatiya_${score}_${date.replace(/\./g, '-')}.pdf`);
+    await addPdfBranding(doc);
+    doc.save(`Эмпатия_${score}_${date.replace(/\./g, '-')}.pdf`);
   };
 
   return (

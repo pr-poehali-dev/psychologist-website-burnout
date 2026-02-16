@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
-import { registerCyrillicFonts } from '@/lib/pdf-fonts';
+import { registerCyrillicFonts, addPdfBranding } from '@/lib/pdf-fonts';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { getResult, calculateScore, TestResult as TestResultType } from './testData';
 import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
@@ -87,9 +87,7 @@ const TestResult = ({ answers, testHistory, onReset, onBooking, onDownloadHistor
     doc.text('Шкала тревожности Бека (BAI)', 105, yPos + 40, { align: 'center' });
     doc.text('Beck Anxiety Inventory', 105, yPos + 47, { align: 'center' });
     
-    doc.setFontSize(9);
-    doc.setTextColor(100, 100, 100);
-    doc.text('Для записи на консультацию: t.me/algonpsy', 105, 280, { align: 'center' });
+    await addPdfBranding(doc);
 
     doc.save(`BAI_результаты_${date.replace(/\./g, '-')}.pdf`);
   };

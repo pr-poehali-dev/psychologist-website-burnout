@@ -7,7 +7,7 @@ import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import { registerCyrillicFonts } from '@/lib/pdf-fonts';
+import { registerCyrillicFonts, addPdfBranding } from '@/lib/pdf-fonts';
 
 interface ABCDRow {
   a: string;
@@ -83,6 +83,7 @@ const ABCDTable = () => {
       margin: { left: 14, right: 14 },
     });
 
+    await addPdfBranding(doc);
     doc.save('ABCDE-таблица.pdf');
     
     toast({
