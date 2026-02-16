@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
+import { registerCyrillicFonts } from '@/lib/pdf-fonts';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { getResult, calculateScore, TestResult as TestResultType } from './testData';
 import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
@@ -19,24 +20,25 @@ const TestResult = ({ answers, testHistory, onReset, onBooking, onDownloadHistor
   const result = getResult(score);
   const maxScore = 63;
 
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     const doc = new jsPDF();
+    await registerCyrillicFonts(doc);
     const date = new Date().toLocaleDateString('ru-RU');
 
-    doc.setFont('helvetica', 'bold');
+    doc.setFont('Roboto', 'bold');
     doc.setFontSize(20);
-    doc.text('Rezultaty testa BAI', 105, 20, { align: 'center' });
+    doc.text('Результаты теста BAI', 105, 20, { align: 'center' });
     
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Data prohojdeniya: ${date}`, 105, 30, { align: 'center' });
+    doc.setFont('Roboto', 'normal');
+    doc.text(`Дата прохождения: ${date}`, 105, 30, { align: 'center' });
     
     doc.setDrawColor(200, 200, 200);
     doc.line(20, 35, 190, 35);
     
     doc.setFontSize(16);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Vash rezultat:', 20, 50);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Ваш результат:', 20, 50);
     
     doc.setFontSize(32);
     const scoreColor = score <= 7 ? [22, 163, 74] : score <= 15 ? [202, 138, 4] : score <= 25 ? [234, 88, 12] : [220, 38, 38];
@@ -48,42 +50,48 @@ const TestResult = ({ answers, testHistory, onReset, onBooking, onDownloadHistor
     
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Interpretaciya:', 20, 105);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Интерпретация:', 20, 105);
     
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     const descLines = doc.splitTextToSize(result.description, 170);
     doc.text(descLines, 20, 115);
     
-    doc.setFont('helvetica', 'bold');
-    doc.text('Rekomendacii:', 20, 135);
+    const descHeight = descLines.length * 6;
+    let yPos = 115 + descHeight + 5;
+
+    doc.setFont('Roboto', 'bold');
+    doc.text('Рекомендации:', 20, yPos);
     
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     const recLines = doc.splitTextToSize(result.recommendation, 170);
-    doc.text(recLines, 20, 145);
+    doc.text(recLines, 20, yPos + 10);
     
+    const recHeight = recLines.length * 6;
+    yPos = yPos + 10 + recHeight + 10;
+
     doc.setFontSize(10);
-    doc.setFont('helvetica', 'italic');
+    doc.setFont('Roboto', 'bold');
     doc.setTextColor(100, 100, 100);
-    doc.text('Vajno:', 20, 175);
-    doc.setFont('helvetica', 'normal');
-    doc.text('- Etot test yavlyaetsya skriningovym instrumentom, a ne diagnozom', 20, 182);
-    doc.text('- Tolko specialist mojet postavit tochnyi diagnoz', 20, 189);
-    doc.text('- Trevojnye rasstroystva horoso poddayutsya lecheniyu', 20, 196);
+    doc.text('Важно:', 20, yPos);
+    doc.setFont('Roboto', 'normal');
+    doc.text('- Этот тест является скрининговым инструментом, а не диагнозом', 20, yPos + 7);
+    doc.text('- Только специалист может поставить точный диагноз', 20, yPos + 14);
+    doc.text('- Тревожные расстройства хорошо поддаются лечению', 20, yPos + 21);
     
     doc.setDrawColor(200, 200, 200);
-    doc.line(20, 210, 190, 210);
+    doc.line(20, yPos + 30, 190, yPos + 30);
     
     doc.setFontSize(10);
     doc.setTextColor(0, 0, 0);
-    doc.text('Shkala trevozhnosti Beka (BAI)', 105, 220, { align: 'center' });
-    doc.text('Beck Anxiety Inventory', 105, 227, { align: 'center' });
+    doc.text('Шкала тревожности Бека (BAI)', 105, yPos + 40, { align: 'center' });
+    doc.text('Beck Anxiety Inventory', 105, yPos + 47, { align: 'center' });
     
     doc.setFontSize(9);
     doc.setTextColor(100, 100, 100);
-    doc.text('Dlya zapisyi na konsultaciyu posetite: calink.ru/Algon', 105, 280, { align: 'center' });
+    doc.text('Для записи на консультацию: t.me/algonpsy', 105, 280, { align: 'center' });
 
-    doc.save(`BAI_rezultaty_${date.replace(/\./g, '-')}.pdf`);
+    doc.save(`BAI_результаты_${date.replace(/\./g, '-')}.pdf`);
   };
 
   return (

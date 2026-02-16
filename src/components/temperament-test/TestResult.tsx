@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { jsPDF } from 'jspdf';
+import { registerCyrillicFonts } from '@/lib/pdf-fonts';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Label } from 'recharts';
 import { getTemperamentType, getTemperamentDescription, calculateScores, TestResult as TestResultType } from './testData';
 import EmailCaptureForm from '@/components/ui/EmailCaptureForm';
@@ -25,24 +26,25 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
     name: result.date
   }));
 
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     const doc = new jsPDF();
+    await registerCyrillicFonts(doc);
     const date = new Date().toLocaleDateString('ru-RU');
 
-    doc.setFont('helvetica', 'bold');
+    doc.setFont('Roboto', 'bold');
     doc.setFontSize(20);
-    doc.text('Test na temperament', 105, 20, { align: 'center' });
+    doc.text('Тест на темперамент', 105, 20, { align: 'center' });
     
     doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Data: ${date}`, 105, 30, { align: 'center' });
+    doc.setFont('Roboto', 'normal');
+    doc.text(`Дата: ${date}`, 105, 30, { align: 'center' });
     
     doc.setDrawColor(200, 200, 200);
     doc.line(20, 35, 190, 35);
     
     doc.setFontSize(16);
-    doc.setFont('helvetica', 'bold');
-    doc.text('Vash tip temperamenta:', 20, 50);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Ваш тип темперамента:', 20, 50);
     
     doc.setFontSize(24);
     doc.setTextColor(147, 51, 234);
@@ -54,14 +56,15 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
     
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
-    doc.text(`Ekstroversiya: ${extraversion}/24`, 20, 90);
-    doc.text(`Neirotizm: ${neuroticism}/24`, 20, 97);
-    doc.text(`Shkala lzhi: ${lie}/9 ${lie > 5 ? '(rezultaty mogut byt nedostoverny)' : ''}`, 20, 104);
+    doc.setFont('Roboto', 'normal');
+    doc.text(`Экстраверсия: ${extraversion}/24`, 20, 90);
+    doc.text(`Нейротизм: ${neuroticism}/24`, 20, 97);
+    doc.text(`Шкала лжи: ${lie}/9 ${lie > 5 ? '(результаты могут быть недостоверны)' : ''}`, 20, 104);
     
-    doc.setFont('helvetica', 'bold');
-    doc.text('Harakteristiki:', 20, 120);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Характеристики:', 20, 120);
     
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     let yPos = 130;
     description.traits.forEach((trait: string) => {
       const lines = doc.splitTextToSize(`+ ${trait}`, 170);
@@ -69,10 +72,10 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
       yPos += lines.length * 7;
     });
     
-    doc.setFont('helvetica', 'bold');
-    doc.text('Oblasti razvitiya:', 20, yPos + 5);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Области развития:', 20, yPos + 5);
     
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     yPos += 15;
     description.weaknesses.forEach((weakness: string) => {
       const lines = doc.splitTextToSize(`- ${weakness}`, 170);
@@ -85,14 +88,18 @@ const TestResult = ({ answers, testHistory, onReset, onBooking }: TestResultProp
       yPos = 20;
     }
     
-    doc.setFont('helvetica', 'bold');
-    doc.text('Rekomendacii:', 20, yPos + 5);
+    doc.setFont('Roboto', 'bold');
+    doc.text('Рекомендации:', 20, yPos + 5);
     
-    doc.setFont('helvetica', 'normal');
+    doc.setFont('Roboto', 'normal');
     const recLines = doc.splitTextToSize(description.recommendations, 170);
     doc.text(recLines, 20, yPos + 15);
 
-    doc.save(`Temperament_${temperamentType}_${date.replace(/\./g, '-')}.pdf`);
+    doc.setFontSize(9);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Для записи на консультацию: t.me/algonpsy', 105, 280, { align: 'center' });
+
+    doc.save(`Темперамент_${temperamentType}_${date.replace(/\./g, '-')}.pdf`);
   };
 
   const isUnreliable = lie > 5;
