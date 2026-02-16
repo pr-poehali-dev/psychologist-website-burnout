@@ -13,7 +13,7 @@ interface LoginFormProps {
 const LoginForm = ({ onLogin }: LoginFormProps) => {
   const [password, setPassword] = useState('');
   const { toast } = useToast();
-  const correctPassword = 'client';
+  const correctPassword = 'algon';
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
